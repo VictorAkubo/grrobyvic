@@ -71,11 +71,15 @@
 .sidebar-menu li.active a {
   color: white;
 }
-
-.sidebar-menu li a:hover {
+{
+  /*
+  .sidebar-menu li a:hover {
   background: #d4edc9;
   border-radius: 0;
 }
+  */
+}
+
 
 .sidebar-menu li .icon {
   width: 20px;

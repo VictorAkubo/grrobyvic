@@ -3,33 +3,32 @@ import "../styles/products/NewProduct.css";
 
 const NewProduct = () => {
   return (
-    
-    <div className="container">
-      <div className="content">
-        <div className="form-section">
-          <div className="product-container">
-            <p className="section-title">Create Product</p>
+    <div className="container_newproduct">
+      <div className="content_newproduct">
+        <div className="form-section_newproduct">
+          <div className="product-container_newproduct">
+            <p className="section-title_newproduct">Create Product</p>
 
-            <div className="input-group">
+            <div className="input-group_newproduct">
               <label>Product Name</label>
               <input type="text" placeholder="Enter Product Name" />
             </div>
 
-            <div className="input-group">
+            <div className="input-group_newproduct">
               <label>Product Category</label>
               <select>
                 <option>Select Product Category</option>
               </select>
             </div>
 
-            <div className="input-group">
+            <div className="input-group_newproduct">
               <label>Unit of Measurement</label>
-              <select className="full-width">
+              <select className="full-width_newproduct">
                 <option>Select Unit of Measurement</option>
               </select>
             </div>
 
-            <div className="selected-units">
+            <div className="selected-units_newproduct">
               {[
                 "Gram (g)",
                 "Pound (lbs)",
@@ -37,23 +36,23 @@ const NewProduct = () => {
                 "Kilogram (kg)",
                 "Modu",
               ].map((unit) => (
-                <span key={unit} className="unit-tag">
-                  {unit} <span className="remove">x</span>
+                <span key={unit} className="unit-tag_newproduct">
+                  {unit} <span className="remove_newproduct">x</span>
                 </span>
               ))}
             </div>
 
-            <div className="input-group">
+            <div className="input-group_newproduct">
               <label>Product Description</label>
               <textarea placeholder="Enter Product Description"></textarea>
             </div>
 
-            <div className="input-group">
+            <div className="input-group_newproduct">
               <label>Product Variation</label>
-              <button className="add-btn">+ Add Variation</button>
+              <button className="add-btn_newproduct">+ Add Variation</button>
             </div>
 
-            <table className="product-table">
+            <table className="product-table_newproduct">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -66,7 +65,7 @@ const NewProduct = () => {
                 {Array(5).fill(
                   <tr>
                     <td>
-                      <img src="bag-icon.png" className="icon" alt="Bag Icon" /> 35kg Sack Bag
+                      <img src="bag-icon.png" className="icon_newproduct" alt="Bag Icon" /> 35kg Sack Bag
                     </td>
                     <td>11</td>
                     <td>$30.00</td>
@@ -76,51 +75,43 @@ const NewProduct = () => {
               </tbody>
             </table>
 
-            <p className="optional">Optional</p>
+            <p className="optional_newproduct">Optional</p>
 
-            <div className="input-group">
+            <div className="input-group_newproduct">
               <label>Promo</label>
-              <button className="add-btn">+ Add Promo</button>
+              <button className="add-btn_newproduct">+ Add Promo</button>
             </div>
 
-            <div className="input-group">
+            <div className="input-group_newproduct">
               <label>Special Tags</label>
               <select>
                 <option>Select Product Category</option>
               </select>
             </div>
 
-            <button className="add-tag">+ Add Tag</button>
-            <div className="selected-tags">
+            <button className="add-tag_newproduct">+ Add Tag</button>
+            <div className="selected-tags_newproduct">
               {["White Rice", "Brown Rice", "Arborio", "Jasmine", "Basmati"].map((tag) => (
-                <span key={tag} className="tag">{tag}</span>
+                <span key={tag} className="tag_newproduct">{tag}</span>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="right-section">
-          <div className="image-grid">
+        <div className="right-section_newproduct">
+          <div className="image-grid_newproduct">
             {["item1.png", "item2.png", "item3.png", "item4.png"].map((img, index) => (
-              <img key={index} src={img} className="product-image" alt="Product" />
+              <img key={index} src={img} className="product-image_newproduct" alt="Product" />
             ))}
           </div>
-          <div className="button-group">
-            <button className="save-draft">Save as draft</button>
-            <button className="preview">Preview</button>
+          <div className="button-group_newproduct">
+            <button className="save-draft_newproduct">Save as draft</button>
+            <button className="preview_newproduct">Preview</button>
           </div>
         </div>
       </div>
     </div>
-  
   );
 };
 
 export default NewProduct;
-
-
-
-
-
-
-

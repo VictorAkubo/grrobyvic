@@ -41,9 +41,9 @@ const Sidebar = () => {
               : location.pathname.startsWith(item.path);
           return (
             <li key={item.name} className={isActive ? "active" : ""}>
-              <Link to={item.path}>
+              <Link  className={isActive ? "active" : ""} to={item.path}>
                 <img src={item.icon} alt={item.name} className="icon" />
-                <span>{item.name}</span>
+                <h3 className={isActive ? "active" : ""}>{item.name}</h3>
               </Link>
             </li>
           );

@@ -13,7 +13,7 @@ const dummyData = [
 ];
 
 const ProductsTable  = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const rowsPerPage = 7;
   const [status, setStatus] = useState("All Bargains");
   const totalPages = Math.ceil(dummyData.length / rowsPerPage);
