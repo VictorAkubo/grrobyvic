@@ -1,0 +1,240 @@
+.manage-orders-container {
+    display: flex;
+    height: 100vh;
+    background: #f9f9f9;
+}
+
+.sidebar {
+    width: 250px;
+    background: #eaf8e6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+nav ul .active {
+    background: #4caf50;
+    border-radius: 5px;
+    color: white;
+    padding-left: 10px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.orders-section {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.orders-table-container {
+    overflow-x: auto;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.orders-table th {
+    background: #f1f1f1;
+    font-weight: bold;
+}
+
+.status.delivered {
+    color: green;
+    font-weight: bold;
+}
+
+.view-order {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagebuttonactive {
+    padding: 5px 9px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.pagebutton {
+    padding: 5px 9px;
+}
+
+.pagination .next {
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 14px 18px;
+    opacity: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination .next img {
+    transform: scaleX(-1);
+}
+
+.pagination .previous {
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 14px 18px;
+    opacity: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.previous,
+.next:hover {
+    cursor: pointer;
+}
+
+.pagination .next {
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 14px 18px;
+    opacity: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination .next img {
+    transform: scaleX(-1);
+}
+
+.pagination .previous {
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 14px 18px;
+    opacity: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.previous,
+.next:hover {
+    cursor: pointer;
+}
+
+
+
+.page-number {
+    font-weight: bold;
+}
+
+.delivered {
+    background-color: rgb(136, 236, 136, 0.2);
+    color: rgb(90, 219, 90);
+    padding: 4px 10px;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.declined {
+    background-color: rgb(236, 140, 140, 0.2);
+    color: rgb(238, 105, 105);
+    padding: 4px 10px;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.pending {
+    background-color: rgba(210, 231, 114, 0.2);
+    color: rgb(194, 218, 90);
+    padding: 4px 10px;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.approved {
+    background-color: #28a745;
+    color: white;
+}
+
+.declined {
+    background-color: #dc3545;
+    color: white;
+}
+
+.tablesort {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 17px;
+    margin-bottom: 3rem;
+    background: 0 4px 10px rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), 0 10px 40px rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    align-self: flex-start;
+}
+
+.activestatus {
+    background-color: rgb(29, 173, 29);
+    padding: 13px 23px;
+    border-radius: 17px;
+    align-items: center;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.unactive {
+    padding: 2px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.dropdown {
+    width: 15px;
+    height: 15px;
+}

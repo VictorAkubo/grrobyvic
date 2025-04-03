@@ -1,0 +1,96 @@
+.sidebar {
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: #eef6e5;
+  padding-top: 20px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.logo {
+  width: 120px;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .logo {
+  opacity: 0;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.sidebar-menu li {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  width: 100%;
+}
+
+.sidebar-menu li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s, color 0.3s;
+  width: 100%;
+  padding: 10px;
+}
+
+.sidebar-menu li.active {
+  background: #a3e635;
+  border-radius: 0;
+  width: 100%;
+}
+
+.sidebar-menu li.active a {
+  color: white;
+}
+
+.sidebar-menu li a:hover {
+  background: #d4edc9;
+  border-radius: 0;
+}
+
+.sidebar-menu li .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar.collapsed .sidebar-menu li {
+  justify-content: center;
+  padding: 10px;
+}
+
+.sidebar.collapsed .sidebar-menu li a {
+  justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-menu li a span {
+  display: none;
+}

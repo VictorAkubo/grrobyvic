@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: rgb(83, 81, 81);
+}
+
+.tablesortandtable {
+    align-items: center;
+    margin: 0px 5rem;
+}
+
+.items {
+    display: -webkit-box;
+    max-width: 300px;
+    height: fit-content;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.tablesort {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 17px;
+    margin-bottom: 6rem;
+    background: 0 4px 10px rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), 0 10px 40px rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    align-self: flex-start;
+}
+
+.activestatus {
+    background-color: rgb(29, 173, 29);
+    padding: 13px 23px;
+    border-radius: 17px;
+    align-items: center;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.unactive {
+    padding: 2px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.dropdown {
+    width: 15px;
+    height: 15px;
+}
+
+/* Added css */
+
+
+.tablecontainerorders {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    margin: 2rem 0px;
+    display: flex;
+    background-color: white;
+    padding: 0px 3rem;
+    justify-content: center;
+}
+
+table {
+    margin-top: 3rem;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* Ending css */
+
+td,
+tr {
+    text-align: left;
+}
+
+
+
+
+.tablecontainerorders thead tr {
+    display: grid;
+    margin-bottom: 1rem;
+    border-bottom: 0.5px solid rgb(184, 182, 182);
+    padding: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+}
+
+.tablecontainerorders thead tr th {
+    font-size: 14px;
+    font-weight: 450;
+    width: 150px;
+    align-items: center;
+    gap: 5px;
+}
+
+th img {
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    justify-self: center;
+
+}
+
+td img {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    border-radius: 100%;
+
+}
+
+.tablecontainerorders tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-bottom: 1.4rem;
+    padding: 10px;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.tablecontainerorders tbody tr td {
+    width: 150px;
+}
+.tablecontainerorders tbody tr .ellipsis{
+    justify-self: left;
+}
+
+
+
+button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin: 2px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.approved {
+    background-color: #28a745;
+    color: white;
+}
+
+.declined {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+
+.tablecontainerorders tbody tr .businessandlogo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.businessandlogo img {
+    width: 26px;
+    height: 26px;
+    border-radius: 100px;
+}
+
+.delivered {
+    background-color: rgb(136, 236, 136, 0.2);
+    color: rgb(90, 219, 90);
+    padding: 4px 10px;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.declined {
+    background-color: rgb(236, 140, 140, 0.2);
+    color: rgb(238, 105, 105);
+    padding: 4px 10px;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.pending {
+    background-color: rgba(210, 231, 114, 0.2);
+    color: rgb(194, 218, 90);
+    padding: 4px 10px;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 3rem;
+}
+
+.pagination .next {
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 14px 18px;
+    opacity: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination .next img {
+    transform: scaleX(-1);
+}
+
+.pagination .previous {
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    padding: 14px 18px;
+    opacity: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.previous,
+.next:hover {
+    cursor: pointer;
+}
+
+.numbering {
+    display: flex;
+    gap: 7px;
+}
+
+.allpagebutton:hover {
+    cursor: pointer;
+}
+
+.pagebutton {
+    padding: 5px 9px;
+}
+
+.pagebuttonactive {
+    padding: 5px 9px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}

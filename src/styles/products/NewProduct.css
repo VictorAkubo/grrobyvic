@@ -1,0 +1,316 @@
+/* General Styles */
+/*
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}*/
+
+/* Layout */
+
+/* Main Content */
+.content {
+    display: flex;
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    margin: 10px;
+    gap: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #888;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.icons img{
+    width: 24px;
+    height: 24px;
+}
+.icons .profile-picture{
+    width: 44px;
+    height: 44px;
+    border-radius: 100px;
+}
+
+.user-info {
+    text-align:left;
+}
+
+.user-name {
+    font-weight: bold;
+    display: block;
+}
+
+.user-email {
+    font-size: 12px;
+    color: #777;
+}
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* Product Container */
+.product-container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Title */
+.section-title {
+    color: green;
+    font-weight: bold;
+}
+
+/* Input Groups */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    width: 180px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: white;
+}
+
+/* Full Width for Unit Dropdown */
+.full-width {
+    width: 100%;
+}
+
+/* Unit Selection */
+.selected-units {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.unit-tag {
+    background: #D4EDC9;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.unit-tag .remove {
+    color: red;
+    cursor: pointer;
+}
+
+/* Table */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.product-table th, .product-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-table th {
+    background: #f9f9f9;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+/* Optional Label */
+.optional {
+    color: green;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Buttons */
+.add-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    background: #D4EDC9;
+    text-align: center;
+    align-self: right;
+    justify-self: right;
+}
+.add-tag{
+    display: flex;
+    background-color: white;
+    border:1px solid #D4EDC9;
+    margin-bottom: 14px;
+    justify-self: right;
+    padding: 5px 7px;
+}
+
+/* Promo & Tags */
+.selected-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #D4EDC9;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container */
+
+/* Image Grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.image-box {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #3DA35D; /* Slight lemon-green shade */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Buttons */
+.draft-btn {
+    background: transparent;
+    border: 2px solid #3DA35D;
+    color: #3DA35D;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 140px;
+}
+
+.preview-btn {
+    background: #3DA35D;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 140px;
+}
+
+
+
+/* Right Section: Image Grid & Buttons */
+.right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Image Grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px; /* Reduced gap to make images closer */
+}
+
+.product-image {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #88cc88;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.save-draft {
+    background-color: white;
+    border: 1px solid #88cc88;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+.preview {
+    background-color: #88cc88;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}

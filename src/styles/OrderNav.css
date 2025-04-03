@@ -1,0 +1,70 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 3rem;
+    width: 100%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+
+.ordernav {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.searchandnotifyicon {
+    background-color: rgb(218, 216, 216);
+    padding: 13px;
+    border-radius: 100px;
+    width: 17px;
+    height: 17px;
+}
+
+.profileandpicture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.profilepicture {
+    border-radius: 100px;
+    object-fit: cover;
+    width: 43px;
+    height: 43px;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.profiledropdown {
+    width: 15px;
+    height: 15px;
+
+}
+
+
+
+
+
+
+
+
+
+
