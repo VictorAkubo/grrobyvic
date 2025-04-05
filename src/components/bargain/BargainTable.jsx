@@ -114,9 +114,8 @@ const BargainTable = () => {
             ))}
           </tbody>
         </table>
-      </div>
-      {/* Pagination */}
-      <div className="pagination">
+       {/* Pagination */}
+        <div className="pagination">
         <div className="previous"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
@@ -144,6 +143,9 @@ const BargainTable = () => {
           <img src="/assets/Vector.svg" alt="" />
         </div>
       </div>
+      </div>
+ 
+
     </div>
   );
 };

@@ -1,0 +1,173 @@
+
+.dashboard-container {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8fdf6;
+    padding: 2rem;
+    color: #333;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .dashboard-header p {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .profile-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .analytics-cards {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    text-align: center;
+  }
+  
+  .card h3 {
+    margin: 0;
+    font-size: 22px;
+  }
+  
+  .card p {
+    margin: 0.25rem 0 0;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .card-yellow {
+    background-color: #fefee7;
+  }
+  
+  .card-orange {
+    background-color: #fff4e6;
+  }
+  
+  .card-lightgreen {
+    background-color: #ecfef3;
+  }
+  
+  .card-darkgreen {
+    background-color: #dcfce7;
+  }
+  
+  .chart-section {
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    margin-bottom: 2rem;
+  }
+  
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .chart-box {
+    height: 220px;
+    background: #f3f3f3;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+  }
+  
+  .orders-section {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  }
+  
+  .orders-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .orders-header a {
+    font-size: 14px;
+    color: #4caf50;
+    text-decoration: none;
+  }
+  
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .orders-table th, .orders-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .orders-table thead {
+    background-color: #f5f5f5;
+  }
+  
+  .status {
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  
+  .status.success {
+    background-color: #e6f4ea;
+    color: #2e7d32;
+  }
+  
+  .status.pending {
+    background-color: #fff8e1;
+    color: #ff9800;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #43a047;
+  }
+  
