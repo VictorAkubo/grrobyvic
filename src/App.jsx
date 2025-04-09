@@ -22,6 +22,8 @@ import Customers from "./pages/Customers";
 import Staffs from "./pages/Staffs";
 import OrderItem from "./pages/OrderItem";
 import NewProduct from "./pages/NewProduct";
+import ProductItem from "./components/products/ProductItem";
+import Notification from "./pages/Notification";
 // import Driver from "./pages/Driver";
 
 
@@ -39,12 +41,16 @@ const App = () => {
 
         {/* Wrap all protected pages inside Layout */}
         <Route element={<ProtectedRoute />}>
-         <Route element={<Layout />}>
-          <Route path="/" element={<Dashboard />} />
+         <Route  element={<Layout />}>
+          <Route path={"/"} element={<Dashboard />} />
+          <Route path="/" element={<Dashboard/>}/>
           <Route path="/orders" element={<Orders/>} />
+          <Route path="/dashboard/notification" element={<Notification/>}/>
+                  
           <Route path="/customers" element={<Customers />} />
 
            <Route path="/product" element={<Products />} /> 
+           <Route path="/product/item" element={<ProductItem/> }/>
            <Route path="/product/add_new_product" element={<NewProduct/>}/>
           <Route path="/orders/:id" element={<OrderItem/>}/>
           <Route path="/dispute" element={<Dispute />} / >

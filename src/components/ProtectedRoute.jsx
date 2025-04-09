@@ -13,7 +13,7 @@ export default ProtectedRoute;
 import { Outlet, Navigate } from "react-router-dom";
 
 const ProtectedRoute = () => {
-  const isAuthenticated = true; // Replace this with your actual authentication logic
+  const isAuthenticated =true; // Replace this with your actual authentication logic
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };

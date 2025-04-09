@@ -11,7 +11,7 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    { name: "Dashboard", path: "/", icon: "path/to/dashboard.png" },
+    { name: "Dashboard", path: "/" , icon: "path/to/dashboard.png" },
     { name: "Product", path: "/product", icon: "path/to/product.png" },
     { name: "Dispute", path: "/dispute", icon: "path/to/dispute.png" },
     { name: "Orders", path: "/orders", icon: "path/to/orders.png" },
@@ -20,16 +20,16 @@ const Sidebar = () => {
     { name: "Settings", path: "/settings", icon: "path/to/settings.png" },
     { name: "Customers", path: "/customers", icon: "path/to/customers.png" },
     { name: "Staff", path: "/staff", icon: "path/to/staff.png" },
-    { name: "Driver", path: "/driver", icon: "path/to/driver.png" },
+   /*  { name: "Driver", path: "/driver", icon: "path/to/driver.png" }, */
   ];
 
   return (
     <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
       <div className="sidebar-header">
         <img src="path/to/logo.png" alt="Logo" className="logo" />
-        <button className="toggle-btn" onClick={handleToggle}>
+        {/* <button className="toggle-btn" onClick={handleToggle}>
           ☰
-        </button>
+        </button> */}
       </div>
       <ul className="sidebar-menu">
         {menuItems.map((item) => {
@@ -41,8 +41,8 @@ const Sidebar = () => {
               : location.pathname.startsWith(item.path);
           return (
             <li key={item.name} className={isActive ? "active" : ""}>
-              <Link  className={isActive ? "active" : ""} to={item.path}>
-                <img src={item.icon} alt={item.name} className="icon" />
+              <Link  className={isActive ? "active" : "unactive"} to={item.path}>
+                <img src={item.icon} className="icon" />
                 <h3 className={isActive ? "active" : ""}>{item.name}</h3>
               </Link>
             </li>

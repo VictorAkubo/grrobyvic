@@ -126,6 +126,7 @@ button {
   justify-content: space-between;
   align-items: center;
   margin: 1rem 3rem;
+  height: fit-content;
 }
 
 .pagination .next {
@@ -136,10 +137,20 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
+
 }
 
 .pagination .next img {
   transform: scaleX(-1);
+  height: 26px;
+  width:26px;
+
+}
+.pagination .previous img {
+  transform: scaleX(-1);
+  height: 26px;
+  width:26px;
+
 }
 
 .pagination .previous {

@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/OrderNav.css";
+import { useNavigate } from "react-router-dom";
 const OrderNav = ({ header }) => {
+  const navigate = useNavigate()
   return (
     <nav className="navbar">
       <div className="ordernav">
@@ -14,6 +16,7 @@ const OrderNav = ({ header }) => {
           alt=""
         />
         <img
+        onClick={()=>navigate("/dashboard/notification")}
           className="searchandnotifyicon"
           src="/assets/downarrow.svg"
           alt=""

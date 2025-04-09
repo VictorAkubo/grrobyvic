@@ -81,7 +81,7 @@ const ProductsTable  = () => {
           </thead>
           <tbody>
             {currentRows.map((row, index) => (
-              <tr key={row.id}>
+              <tr onClick={()=>navigate("/product/item")} key={row.id}>
                 <td className="imageanditem"><img className="itemimage" src="mail-dynamic-color.png"/> <span>{row.menuitems}</span></td>
                 <td className="items">{row.category}</td>
                 <td>{row.date}</td>
