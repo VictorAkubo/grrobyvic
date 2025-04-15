@@ -11,22 +11,22 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    { name: "Dashboard", path: "/" , icon: "path/to/dashboard.png" },
-    { name: "Product", path: "/product", icon: "path/to/product.png" },
-    { name: "Dispute", path: "/dispute", icon: "path/to/dispute.png" },
-    { name: "Orders", path: "/orders", icon: "path/to/orders.png" },
-    { name: "Bargain", path: "/bargain", icon: "path/to/bargain.png" },
-    { name: "Review", path: "/review", icon: "path/to/review.png" },
-    { name: "Settings", path: "/settings", icon: "path/to/settings.png" },
-    { name: "Customers", path: "/customers", icon: "path/to/customers.png" },
-    { name: "Staff", path: "/staff", icon: "path/to/staff.png" },
-   /*  { name: "Driver", path: "/driver", icon: "path/to/driver.png" }, */
+    { name: "Dashboard", path: "/" , icon: "/dashboard.svg" },
+    { name: "Product", path: "/product", icon: "/products.svg" },
+    { name: "Dispute", path: "/dispute", icon: "/disputes.svg" },
+    { name: "Orders", path: "/orders", icon: "/orders.svg" },
+    { name: "Bargain", path: "/bargain", icon: "/bargains.svg" },
+    { name: "Review", path: "/review", icon: "/reviews.svg" },
+    { name: "Settings", path: "/settings", icon: "/settings.svg" },
+    { name: "Customers", path: "/customers", icon: "/customers.svg" },
+    { name: "Staff", path: "/staff", icon: "/staffs.svg" },
+   /*  { name: "Driver", path: "/driver", icon: "/driver.svg" }, */
   ];
 
   return (
-    <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+    <div className={`sidebar`}>
       <div className="sidebar-header">
-        <img src="path/to/logo.png" alt="Logo" className="logo" />
+        <img src="GRRO.svg"  className="logo" />
         {/* <button className="toggle-btn" onClick={handleToggle}>
           ☰
         </button> */}
@@ -42,9 +42,12 @@ const Sidebar = () => {
           return (
             <li key={item.name} className={isActive ? "active" : ""}>
               <Link  className={isActive ? "active" : "unactive"} to={item.path}>
-                <img src={item.icon} className="icon" />
+                <img src={item.icon} className="sidebaricon" />
+
                 <h3 className={isActive ? "active" : ""}>{item.name}</h3>
+              
               </Link>
+              
             </li>
           );
         })}

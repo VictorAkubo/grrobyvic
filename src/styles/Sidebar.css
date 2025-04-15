@@ -1,16 +1,11 @@
 .sidebar {
-  left: 0;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background: #eef6e5;
-  padding-top: 20px;
-  transition: width 0.3s ease;
-  overflow: hidden;
-  /*   -webkit-transition:;
-  -moz-transition:;
-  -ms-transition:;
-  -o-transition:; */
+  width: 317px;
+  height: 1200px;
+  top: 18px;
+  left: 21px;
+  border-radius: 32px;
+  background: #f9ffef;
+  padding-top: 5px;
 }
 
 .sidebar.collapsed {
@@ -18,19 +13,16 @@
 }
 
 .sidebar-header {
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 15px;
 }
 
-.logo {
-  width: 120px;
+.sidebar-header img {
+  display: flex;
+  align-self: flex-start;
+  width: 140px;
+  height: 120px;
   transition: opacity 0.3s ease;
-  -webkit-transition: ;
-  -moz-transition: ;
-  -ms-transition: ;
-  -o-transition: ;
 }
 
 .sidebar.collapsed .logo {
@@ -47,7 +39,7 @@
 .sidebar-menu {
   list-style: none;
   padding: 0;
-  margin: 20px 0;
+  margin: 1px 0;
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -57,7 +49,7 @@
   display: flex;
   align-items: center;
   height: fit-content;
-  padding: 5px 20px;
+  padding: 5px 5px;
   gap: 10px;
   width: 210px;
   margin: 5px 0px;
@@ -69,21 +61,19 @@
   font-weight: bold;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   transition: background 0.3s, color 0.3s;
-  width: 100%;
-  padding: 10px;
-  -webkit-transition: background 0.3s, color 0.3s;
-  -moz-transition: background 0.3s, color 0.3s;
-  -ms-transition: background 0.3s, color 0.3s;
-  -o-transition: background 0.3s, color 0.3s;
+
+  padding: 5px;
 }
-.sidebar-menu .active h3{
-  border:none;
+.sidebar-menu .active h3 {
+  border: none;
 }
-.sidebar-menu img{
+.sidebar-menu img {
   width: 20px;
   height: 20px;
+  background-color: eef685;
+  color: black;
 }
 
 .sidebar-menu .active {
@@ -109,9 +99,9 @@
   border-radius: 0;
 } */
 
-.sidebar-menu li .icon {
-  width: 20px;
-  height: 20px;
+.sidebar-menu li .sidebaricon {
+  width: 30px;
+  height: 30px;
 }
 
 .sidebar.collapsed .sidebar-menu li {

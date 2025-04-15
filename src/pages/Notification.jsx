@@ -21,7 +21,7 @@ const Notification = () => {
       <div class="notification-content">
       <p></p>
         <div class="icon">
-          <img alt="unknown"src="./double-image.svg"/>
+          <img alt="unknown"src="/messages.svg"/>
         </div>
         <div>
           <div class="notification-text">
@@ -38,7 +38,7 @@ const Notification = () => {
 
     <div class="notification-item">
       <div class="notification-content">
-        <div class="icon"><img alt="unknown"src="./double-image.svg"/></div>
+        <div class="icon"><img alt="unknown"src="/notificationcancel.svg"/></div>
         <div>
           <div class="notification-text">
             New <span>Bargain</span> from Greatness Marshal
@@ -58,7 +58,7 @@ const Notification = () => {
 
     <div class="notification-item">
       <div class="notification-content">
-        <div class="icon"><img alt="unknown"src="./double-image.svg"/></div>
+        <div class="icon"><img alt="unknown"src="/cart!.svg"/></div>
         <div>
           <div class="notification-text">
             <span>Quantity Alert</span> on Gino Tomato has dropped
@@ -77,7 +77,7 @@ const Notification = () => {
 
     <div class="notification-item">
       <div class="notification-content">
-        <div class="icon"><img alt="unknown"src="./double-image.svg"/></div>
+        <div class="icon"><img alt="unknown"src="/markedcalender.svg"/></div>
       
         <div>
           <div class="notification-text">
@@ -94,7 +94,7 @@ const Notification = () => {
 
     <div class="notification-item">
       <div class="notification-content">
-        <div class="icon"><img alt="unknown"src="./double-image.svg"/></div>
+        <div class="icon"><img alt="unknown"src="/bell.svg"/></div>
         <div>
           <div class="notification-text">
             Check out your sales breakdown for the week

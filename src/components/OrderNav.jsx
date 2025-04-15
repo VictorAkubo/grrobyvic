@@ -12,17 +12,17 @@ const OrderNav = ({ header }) => {
       <div className="profile">
         <img
           className="searchandnotifyicon"
-          src="/assets/downarrow.svg"
+          src="/search.svg"
           alt=""
         />
         <img
         onClick={()=>navigate("/dashboard/notification")}
           className="searchandnotifyicon"
-          src="/assets/downarrow.svg"
+          src="/notification.svg"
           alt=""
         />
         <div className="profileandpicture">
-          <img className="profilepicture" src="/assets/download.png" alt="" />
+          <img className="profilepicture" src="/Octocat.png" alt="" />
           <div className="username">
             <h3>Dexter Olaniyi</h3>
             <p>DexterOlaniyi@gmail.com</p>

@@ -17,7 +17,7 @@ const Login = () => {
                     <h5>or</h5>
                     <p></p>
                 </div>
-                <div onClick={() => setInput("inputemail")} className={`email ${input === "inputemail" ? "active" : "notactive"}`} >
+                <div onClick={() => setInput("inputekmail")} className={`email ${input === "inputemail" ? "active" : "notactive"}`} >
                     <p>Email Address</p>
                     <input className={`${input === "inputemail" ? "active" : "notactive"}`} />
                 </div>
@@ -30,7 +30,7 @@ const Login = () => {
                 <p className="">Not Registered Yet? <span>Create an Account</span></p>
                 <p>Continue as guest</p>
             </div>
-            <img src="./assets/frame.png" alt='' />
+            <img className='sideimage' src="./assets/frame.png" alt='' />
         </div>
     )
 }

@@ -2,10 +2,10 @@ import React from 'react'
 import "../../styles/products/ProductItem.css"
 const ProductItem = () => {
   return (
-    <body>
-  <div class="product-itemcontainer">
-    <div class="main-content">
-      
+
+ 
+    <div class="productitem-main-content">
+
       <div class="left-section">
         <img class="main-image" src="./mail-dynamic-color.png" alt="Main Product Image" />
         <h3>Fresh Letters</h3>
@@ -106,8 +106,9 @@ const ProductItem = () => {
   </div>
 </div>
 
-  </div>
-</body>
+
+ 
+
   )
 }
 

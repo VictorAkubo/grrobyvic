@@ -4,19 +4,23 @@
     background-color: #fff;
     color: #1a1a1a;
   }*/
+  /*
   .product-itemcontainer {
 max-width: 1200px;
-margin: auto;
-padding: 40px 20px;
-}
 
-.main-content {
+padding: 10px 3px;
+}*/
+
+.productitem-main-content {
 display: flex;
+padding:16px;
+justify-content:space-between;
 gap: 40px;
+width:100%;
 }
 
 .left-section {
-flex: 1.5;
+flex: 2;
 }
 
 .main-image {

@@ -1,4 +1,4 @@
-.manage-orders-container {
+.manage-dispute-container {
     display: flex;
     height: 100vh;
     background: #f9f9f9;
@@ -47,29 +47,29 @@ header {
     margin-bottom: 20px;
 }
 
-.orders-section {
+.dispute-section {
     background: white;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.orders-table-container {
+.dispute-table-container {
     overflow-x: auto;
 }
 
-.orders-table {
+.dispute-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.orders-table th, .orders-table td {
+.dispute-table th, .dispute-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-.orders-table th {
+.dispute-table th {
     background: #f1f1f1;
     font-weight: bold;
 }

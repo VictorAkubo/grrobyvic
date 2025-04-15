@@ -3,7 +3,7 @@ import "../styles/dispute/Dispute.css";
 
 const Dispute = () => {
     return (
-        <div className="manage-orders-container">
+        <div className="manage-dispute-container">
             <aside className="sidebar">
                 <div className="logo">SRRO</div>
                 <nav>
@@ -30,9 +30,9 @@ const Dispute = () => {
                         <span className="user-name">Duster Olaniyi</span>
                     </div>
                 </header>
-                <section className="orders-section">
-                    <div className="orders-table-container">
-                        <table className="orders-table">
+                <section className="dispute-section">
+                    <div className="dispute-table-container">
+                        <table className="dispute-table">
                             <thead>
                                 <tr>
                                     <th>ID</th>
