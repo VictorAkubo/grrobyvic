@@ -499,7 +499,7 @@ const NewProduct = () => {
     onChange={handleFileChange}
     accept="image/*"
   />
-
+ff
   {/* Button Group */}
   <div className="button-group_newproduct flex gap-4">
     <button className="save-draft_newproduct">Save as draft</button>
