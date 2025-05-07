@@ -1,0 +1,222 @@
+.rolemodal {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 706px;
+    height: 688px;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+}
+
+.roleheaderandbtn {
+    width: 658px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.roleheaderandbtn h2 {
+    font-family: Outfit;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+}
+
+.roleheaderandbtn div {
+    display: flex;
+    width: 103px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-width: 75px;
+    border-radius: 50px;
+    gap: 6px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #FFFFFF;
+    background-color: #1B9D2F;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 1%;
+
+}
+
+.rolesagentandspecrole {
+    display: flex;
+    flex-direction: column;
+    width: 658px;
+    margin: 0 auto;
+    gap: 26px;
+}
+
+.rolespartitions {
+    display: flex;
+    width: 658px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.rolespartitions h3 {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -1.1%;
+
+}
+
+.rolespartitions .userdropdown {
+    height: 16px;
+    width: 16px;
+}
+
+.governmentagent {
+    display: flex;
+    width: 658px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.governmentagent h3 {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -1.1%;
+
+}
+
+.governmentagent img {
+    height: 16px;
+    width: 16px;
+}
+
+.agentandpermissions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.addedpermissions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 658px;
+    gap: 15px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.permission {
+    background: #F9FFEF;
+    width: 108px;
+    height: 20px;
+    border-radius: 8px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    gap: 8px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    margin: 0;
+}
+
+.permission img {
+    width: 16px;
+    height: 16px;
+}
+
+.editanddeleteaccount {
+    display: flex;
+    align-items: center;
+    width: 208;
+    height: 32;
+    gap: 16px;
+    align-self: flex-end;
+    margin-top: 16px;
+}
+
+.editanddeleteaccount .editrole {
+    backdrop-filter: blur(18.100000381469727px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 78px;
+    height: 32px;
+    border-radius: 10px;
+    gap: 10px;
+    font-family: Nunito;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    font-variant-numeric: lining-nums proportional-nums;
+    background: #F9FFEF;
+}
+
+.editanddeleteaccount .deleterole {
+    backdrop-filter: blur(18.100000381469727px);
+    width: 114px;
+    height: 32px;
+    border-radius: 10px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: Nunito;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    font-variant-numeric: lining-nums proportional-nums;
+    color: #E43F40;
+    background: #F9FFEF24;
+
+
+}
+
+
+.specificroles {}
+
+.role {
+    display: flex;
+    justify-content: space-between;
+    height: 50.000083923339844px;
+    align-items: center;
+    border-top: 1px solid rgba(0, 51, 52, 0.3);
+}
+
+.roleend {
+    border-bottom: 1px solid rgba(0, 51, 52, 0.3);
+}
+
+.role h3 {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -1.1%;
+    color: #232323;
+}
+
+.role img {
+    width: 16px;
+    height: 16px;
+}

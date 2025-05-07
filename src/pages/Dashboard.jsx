@@ -15,6 +15,10 @@ import {
 const Dashboard = () => {
   const [toggle, setToggle] = useState(false);
   const [activeActionIndex, setActiveActionIndex] = useState(null);
+  const useTruncate = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + "..."
+  }
   const handleExport = () => {
     // Convert the data to CSV format
     const csvContent = generateCSV(metrics);
@@ -32,7 +36,7 @@ const Dashboard = () => {
   const orders = [
     {
       id: 1,
-      items: "Suya Pineaple Yam Eba Mango, Tomatoes, Onions",
+      items: "Suya Pineaple Yam Suya Pineaple Yam Eba Beans, Oranges, Melons Eba Mango, Tomatoes, Onions",
       type: "Bulk sale",
       business: "Tawk Global LLC",
       date: "12 Nov 2023",
@@ -40,7 +44,7 @@ const Dashboard = () => {
     },
     {
       id: 2,
-      items: "Suya Pineaple Yam Eba Beans, Oranges, Melons",
+      items: "Suya Pineaple Yam Suya Pineaple Yam Eba Beans, Oranges, Melons Eba Beans, Oranges, Melons",
       type: "Mixed sale",
       business: "Paysha Nigeria",
       date: "12 Nov 2023",
@@ -48,7 +52,7 @@ const Dashboard = () => {
     },
     {
       id: 3,
-      items: "Suya Pineaple Yam Eba Rice, Tomatoes, Chilli",
+      items: "Suya Pineaple Yam Suya Pineaple Yam Eba Beans, Oranges, Melons Eba Rice, Tomatoes, Chilli",
       type: "Bulk sale",
       business: "Grociple LLC",
       date: "12 Nov 2023",
@@ -56,7 +60,7 @@ const Dashboard = () => {
     },
     {
       id: 4,
-      items: "Suya Pineaple Yam Eba Soya Beans, Bogji",
+      items: "Suya Pineaple Yam Suya Pineaple Yam Eba Beans, Oranges, Melons Eba Soya Beans, Bogji",
       type: "Pieces sale",
       business: "Presile B.",
       date: "12 Nov 2023",
@@ -64,7 +68,7 @@ const Dashboard = () => {
     },
     {
       id: 5,
-      items: "Suya Pineaple Yam Eba Oranges, Pineapples",
+      items: "Suya Pineaple Yam Suya Pineaple Yam Eba Beans, Oranges, Melons Eba Oranges, Pineapples",
       type: "Pieces sale",
       business: "Victor K.",
       date: "12 Nov 2023",
@@ -74,7 +78,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboardorder">
-      <OrderNav header="Dashboard" />
+      <OrderNav header="Dashboard" subheader="Hi Admin, let's get you roling"/>
       <div className="maindashboard-container">
         <div className="analytics-cards">
           <div className="card">
@@ -124,7 +128,6 @@ const Dashboard = () => {
               <div className="chart-title">
                 <h2>Revenue</h2>
               </div>
-
               <div className="chart-buttons">
                 <p>This Month</p>
                 <img src="/dropdown.svg" />
@@ -169,76 +172,82 @@ const Dashboard = () => {
           <table className="dashboard-orders-table">
             <thead>
               <tr>
-                <th className="dashboard-orders-table-ID">
-                  ID <img src="/dropdown.svg" />
-                </th>
-                <th className="dashboard-orders-table-ItemsPurchased">
+                <th className="dashboard-orders-tables ID">
+                  <p>ID </p>
                   <img src="/dropdown.svg" />
-                  Items Purchased
                 </th>
-                <th className="dashboard-orders-table-PurchaseType">
+                <th className="dashboard-orders-tables ItemsPurchased">
+                  <p>Items Purchased</p>
                   <img src="/dropdown.svg" />
-                  Purchase Type
                 </th>
-                <th className="dashboard-orders-table-BusinessName">
-                  <img src="/dropdown.svg" /> Business Name
-                </th>
-                <th className="dashboard-orders-table-Date">
+                <th className="dashboard-orders-tables PurchaseType">
+                  <p> Purchase Type</p>
                   <img src="/dropdown.svg" />
-                  Date
                 </th>
-                <th className="dashboard-orders-table-Status">
+                <th className="dashboard-orders-tables BusinessName">
+                  <p> Business Name</p>
                   <img src="/dropdown.svg" />
-                  Status
                 </th>
-                <th className="dashboard-orders-table-Action">
+                <th className="dashboard-orders-tables Date">
+                  <p> Date</p>
                   <img src="/dropdown.svg" />
-                  Action
                 </th>
+                <th className="dashboard-orders-tables Status">
+                  <p> Status</p>
+                  <img src="/dropdown.svg" />
+                </th>
+                <th className="dashboard-orders-tables Action">
+                  <p> Action</p>
+                  <img src="/dropdown.svg" />
+                </th>
+
               </tr>
             </thead>
             <tbody>
               {orders.map((order, index) => (
                 <tr key={order.id}>
-                  <td>{order.id}</td>
-                  <td>{order.items}</td>
-                  <td>{order.type}</td>
-                  <td>{order.business}</td>
-                  <td>{order.date}</td>
-                  <td>
-                    <span
-                      className={`status ${
-                        order.status.toLowerCase() === "successful"
-                          ? "success"
-                          : "pending"
-                      }`}
+                  <td className="ID dashboard-orders-tablebody">{order.id}</td>
+                  <td className="ItemsPurchased dashboard-orders-tablebody">{useTruncate(order.items, 65)}</td>
+                  <td className="PurchaseType dashboard-orders-tablebody">{order.type}</td>
+                  <td className="BusinessName dashboard-orders-tablebody">
+                    <img src="/download.jpg" />
+                    {order.business}
+                  </td>
+                  <td className="Date dashboard-orders-tablebody">{order.date}</td>
+                  <td className="Status dashboard-orders-tablebody">
+                    <p
+                      className={`status ${order.status.toLowerCase() === "successful"
+                        ? "success"
+                        : "pending"
+                        }`}
                     >
                       {order.status}
-                    </span>
+                    </p>
                   </td>
-                  <td className="modalareaaction">
-                    <button
+                  <td className="modalareaaction Action dashboard-orders-tablebody">
+                    <p
+                    className="cursorellipsis"
                       onClick={() =>
                         setActiveActionIndex(
                           activeActionIndex === index ? null : index
                         )
                       }
                     >
-                      ---
-                    </button>
+                      <img src="/ellipsis.svg" />
+                    </p>
                     {activeActionIndex === index && (
                       <ul className="dashboardaction">
                         <li className="normal underline">
-                          <img src="/logo192.png" /> View Order
+                          <img src="/vieworder.svg" /> View Order
                         </li>
                         <li className="normal underline">
-                          <img src="/logo192.png" /> Track Order
+                          <img src="/trackorder.svg" /> Track Order
                         </li>
                         <li className="normal underline">
-                          <img src="/logo192.png" /> Approve Order
+                          <img src="/approveorder.svg" /> Approve Order
                         </li>
                         <li className="normal">
-                          <img src="/logo192.png" /> Cancel Order
+                          <img src="/cancelorder.svg" /> Cancel Order
                         </li>
                       </ul>
                     )}

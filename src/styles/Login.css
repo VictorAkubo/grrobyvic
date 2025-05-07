@@ -1,12 +1,8 @@
-input {
-    
-}
+input {}
 
 .login {
     display: flex;
     height: 100vh;
-
-
 }
 
 .form::-webkit-scrollbar {
@@ -14,125 +10,289 @@ input {
 }
 
 .form {
-    flex: 1.5;
-    padding: 10px;
-    padding: 2rem 6rem;
     display: flex;
     flex-direction: column;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    gap: 2rem;
+    width: 614px;
+    height: 467px;
+    gap: 40px;
+    margin: auto;
 }
 
-.form .logo {
-    text-align: left;
+.loginlogo {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+
+.loginlogo img {
+    width: 98px;
+    height: 59px;
 }
 
 .form .headingwelcome {
     text-align: left;
 }
 
-.form .welcometext {}
-
-.form .instruction {}
-
-.form .googlebtn {
-    background-color: rgb(184, 177, 177, 0.3);
-    color: black;
-    height: 60px;
-    border-radius: 10px;
-    align-items: center;
-    padding: 5px 10px;
-    justify-content: center;
-    display: flex;
+.form .welcometext {
+    font-family: Lexend;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    color: #1A0F28;
 }
 
-.form .or {
-    display: flex;
-    align-self: center;
+.form .instruction {
+    font-family: Lexend;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1A0F28;
 }
 
 /* input */
-.email {
+
+
+
+
+
+
+
+
+/* NEW UPDATE */
+
+
+.emailnotactive {
     display: flex;
     flex-direction: column;
-    padding: 5px 10px;
+    width: 614px;
+    height: 70px;
+    display: flex;
+    background: #F3F3F3;
+    border-radius: 20px;
+    border: 1.5px solid #EDEDED;
+    margin: 0 auto;
 }
 
 
-.email p {
-    flex: 1;
-    text-align: left;
-    color: rgb(41, 151, 41);
+
+.emailnotactive label {
+    display: none;
 }
 
-.email input {
-    flex: 3;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
+.emailnotactive input {
+    width: 614px;
+    height: 70px;
+    border-radius: 20px;
     outline: none;
+    border: none;
+    background: #F3F3F3;
+
+
+}
+
+.emailactive {
+    display: flex;
+    flex-direction: column;
+    width: 614px;
+    height: 70px;
+    border-radius: 20px;
+    margin: 0 auto;
+    background: #F9FFEF;
+    align-content: flex-start;
+    border: 1.5px solid #A0C077;
+    background: #F3F3F3;
+    overflow: hidden;
+}
+
+.emailactive input {
+    width: 614px;
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background: #F9FFEF;
+
+    /* padding-left: 25px; */
+}
+
+.emailactive label {
+    font-family: Lexend;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1B9D2F;
+    padding-top: 10px;
+    padding-left: 23px;
+    display: flex;
+}
+
+.email {
+    border: none;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 614px;
+    height: 70px;
+    background: #F3F3F3;
+    padding-left: 20px;
+}
+
+.email::placeholder {
+    font-family: Lexend;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1A0F28;
+    opacity: 0.5;
+}
+
+
+
+
+/* Password */
+.passwordinput {
+    display: flex;
+    width: 614px;
+    height: 70px;
+    display: flex;
+    background: #F3F3F3;
+    border-radius: 20px;
+    border: 1.5px solid #EDEDED;
+    margin: 0 auto;
+    gap: 14px;
+    align-items: center;
+}
+
+.passwordinput input {
+    width: 500px;
+    height: 70px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background: #F3F3F3;
+
+
+
+}
+
+.passwordinput h3 {
+    font-family: Lexend;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    text-align: right;
+    vertical-align: middle;
+    color: #1E1E1E;
+    width: 100px;
+    margin-right: 3px;
+    opacity: 0.7;
+}
+
+
+/* Active password */
+
+.activepassword {
+    width: 614px;
+    height: 70px;
+    display: flex;
+    background: #F9FFEF;
+    border-radius: 20px;
+    align-items: center;
+    border: 1.5px solid #A0C077;
+    margin: 0 auto;
+}
+
+.activepassword label {
+    font-family: Lexend;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1B9D2F;
+    padding-top: 10px;
+    padding-left: 23px;
+    display: flex;
+    gap: 14px;
+}
+
+.activepassword input {
+    width: 500px;
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    padding-left: 25px;
+    background: #F9FFEF;
+}
+
+.activepassword h3 {
+    width: 100px;
+    font-family: Lexend;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    text-align: right;
+    vertical-align: middle;
+    color: #1E1E1E;
+    margin-right: 3px;
+    opacity: 0.7;
 }
 
 .password {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-}
-
-.password p {
-    flex: 1;
-    color: rgb(41, 151, 41);
-}
-
-.password p:hover {
-    cursor: pointer;
-}
-
-.password input {
-    display: flex;
-    height: 100%;
     border: none;
-    border-radius: 10px;
-    outline: none;
-    flex: 5;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 614px;
+    height: 70px;
+    background: #F3F3F3;
+    padding-left: 20px;
+}
+
+.password::placeholder {
+    font-family: Lexend;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1A0F28;
+    opacity: 0.5;
+}
+
+.forgotpassword {
+    font-family: Lexend;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    align-self: center;
+    color: #1A0F28;
 
 }
 
-.active {
-    background-color: rgb(224, 247, 199);
-    border: 1px solid rgb(41, 151, 41);
-    height: 60px;
-    border-radius: 10px;
-}
-
-.notactive {
-    background-color: rgb(224, 222, 222);
-    height: 60px;
-    border-radius: 10px;
-}
-
-
-
-.form .or p {}
-
-.form .forgotpassword {}
-
-.form .registerbtn {
-    background-color: rgb(41, 151, 41);
-    color: white;
-    height: 60px;
-    border-radius: 10px;
+.registerbtn {
+    display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
-    padding: 5px 10px;
+    color: #FFFFFF;
+    width: 614px;
+    height: 70px;
+    border-radius: 16px;
+    background: #1B9D2F;
+    font-family: Lexend;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    vertical-align: middle;
+
 }
 
-.sideimage{
-    flex: 1;
-    width: 100%;
+.sideimage {
+    object-fit: contain;
     height: 100vh;
-    object-fit: fill;
-
 }

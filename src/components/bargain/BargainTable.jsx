@@ -57,94 +57,139 @@ const BargainTable = () => {
     setCurrentPage(1); // Reset to first page when filter changes
   };
 
-
+  const useTruncate = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + "..."
+  }
 
   return (
     <div className="tablesortandtable">
-      <div className="tablesort">
-        <p className={filter === "All Bargains" ? "activestatus" : "unactive"} onClick={() => handleFilterChange("All Bargains")}>All Bargains</p>
-        <p className={filter === "approved" ? "activestatus" : "unactive"} onClick={() => handleFilterChange("approved")}>Approved Bargains</p>
-        <p className={filter === "declined" ? "activestatus" : "unactive"} onClick={() => handleFilterChange("declined")}>Declined Bargains</p>
+      <div className="bargaintablesortdiv">
+        <div className="bargainedtablesort">
+          <p className={filter === "All Bargains" ? "activestatus" : "unactive"} onClick={() => handleFilterChange("All Bargains")}>All Bargains</p>
+          <p className={filter === "approved" ? "activestatus" : "unactive"} onClick={() => handleFilterChange("approved")}>Approved Bargains</p>
+          <p className={filter === "declined" ? "activestatus" : "unactive"} onClick={() => handleFilterChange("declined")}>Declined Bargains</p>
 
-      </div>
-      <div className="tablecontainerbargain">
-        <table>
-          <thead>
-            <tr>
-              <th>ID <span><img src="/assets/downarrow.svg" alt="" /></span></th>
-              <th>Items Purchased <span><img src="/assets/downarrow.svg" alt="" /></span></th>
-              <th>Purchase Type <span><img src="/assets/downarrow.svg" alt="" /></span></th>
-              <th>Original Price <span><img src="/assets/downarrow.svg" alt="" /></span></th>
-              <th>Bargained Price <span><img src="/assets/downarrow.svg" alt="" /></span></th>
-              <th>Date <span><img src="/assets/downarrow.svg" alt="" /></span></th>
-              {
-                filter !== "All Bargains" ? <th>Status <span><img src="/assets/downarrow.svg" alt="" /></span></th> : <th>Actions <span><img src="/assets/downarrow.svg" alt="" /></span></th>
-              }
-            </tr>
-          </thead>
-          <tbody>
-            {currentRows.map((row, index) => (
-              <tr key={row.id}>
-                <td>{currentPage <= 1 ? index + 1 : indexOfFirstRow + index + 1}</td>
-                <td className="items">{row.items}</td>
-                <td>{row.type}</td>
-                <td>${row.original}</td>
-                <td className="bargained">${row.bargained}</td>
-                <td>{row.date}</td>
-                {
-                  filter === "approved" ? (
-                    <td>
-                      <button className="approved">Approved</button>
-                    </td>
-
-                  ) : filter === "declined" ? (
-
-                    <td>
-                      <button className="declined">Declined</button>
-                    </td>
-                  ) : (
-                    <td className="approveanddecline">
-                      <button className="approved">Approved</button>
-                      <button className="declined">Declined</button>
-                    </td>
-
-                  )
-                }
-              </tr>
-            ))}
-          </tbody>
-        </table>
-       {/* Pagination */}
-        <div className="pagination">
-        <div className="previous"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          <img src="/assets/Vector.svg" alt="" />
-          Back
         </div>
-        <div className="numbering">
-
-          {Array.from({ length: totalPages }, (_, i) => (
-            <div
-              className={`allpagebutton ${currentPage === i + 1 ? "pagebuttonactive" : "pagebutton"}`}
-              key={i + 1}
-              onClick={() => changePage(i + 1)}
-            >
-              {i + 1}
+      </div>
+      <div className="bargainbargaintablesortandtable">
+        <div className="bargaintable-container">
+          <div className="bargaintable-containerheader">
+            <div className="id">
+              <h2>ID</h2>
+              <img src="dropIcon.svg" />
             </div>
-          ))}
-        </div>
-        <div className="next"
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(dummyData.length / rowsPerPage)))}
-          disabled={indexOfLastRow >= dummyData.length}
-        >
-          Next
-          <img src="/assets/Vector.svg" alt="" />
+            <div className="Items">
+              <h2>Items Purchased</h2>
+              <img src="dropIcon.svg" />
+            </div>
+            <div className="Purchase">
+              <h2>Purchase Type</h2>
+              <img src="dropIcon.svg" />
+            </div>
+            <div className="Original">
+              <h2>Original Price</h2>
+              <img src="dropIcon.svg" />
+            </div>
+            <div className="Bargained">
+              <h2>Bargained Price</h2>
+              <img src="dropIcon.svg" />
+            </div>
+            <div className="Date">
+              <h2>Date</h2>
+              <img src="dropIcon.svg" />
+            </div>
+            <div className="Approved">
+            </div>
+            <div className="Delivered">
+            </div>
+          </div>
+          <div className="bargaintable-containerbody">
+            {currentRows.length > 0 ? (
+              currentRows.map((row, index) => (
+                <div className="bargaintable-containerrow" key={row.id}>
+                  <div className="id">
+                    {currentPage <= 1 ? index + 1 : indexOfFirstRow + index + 1}
+                  </div>
+                  <div className="Items">
+                    {useTruncate(row.items, 65)}
+                  </div>
+                  <div className="Purchase">
+                    {row.type}
+                  </div >
+                  <div className="Original">
+                    ${row.original}
+                  </div>
+                  <div className="Bargained">
+                    ${row.bargained}
+                  </div >
+                  <div className="Date">
+                    <p>{row.date}</p>
+                  </div >
+                  {
+                    filter === "approved" ? (
+                      <div className="Approved">
+                        <button className="approvedblur">Approved</button>
+                      </div >
+
+                    ) : filter === "declined" ? (
+                      <div className="Declined">
+                        <button className="declinedblur">Declined</button>
+                      </div >
+                    ) : (
+                      <>
+                        <div className="Approved">
+                          <button className="approved">Approved</button>
+                        </div >
+                        <div className="Declined">
+                          <button className="declined">Declined</button>
+                        </div >
+                      </>
+
+                    )
+                  }
+                </div >
+              ))
+            ) : (
+              <tr>
+                <td colSpan="8" className="no-data">
+                  No data available
+                </td>
+              </tr>
+            )}
+          </div>
+        </div >
+        {/* Pagination */}
+        <div className="pagination">
+          <div className="previous"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            <img src="/assets/Vector.svg" alt="" />
+            Back
+          </div>
+          <div className="numbering">
+
+            {Array.from({ length: totalPages }, (_, i) => (
+              <div
+                className={`allpagebutton ${currentPage === i + 1 ? "pagebuttonactive" : "pagebutton"}`}
+                key={i + 1}
+                onClick={() => changePage(i + 1)}
+              >
+                {i + 1}
+              </div>
+            ))}
+          </div>
+          <div className="next"
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(dummyData.length / rowsPerPage)))}
+            disabled={indexOfLastRow >= dummyData.length}
+          >
+            Next
+            <img src="/assets/Vector.svg" alt="" />
+          </div>
         </div>
       </div>
-      </div>
- 
+
 
     </div>
   );

@@ -1,0 +1,74 @@
+.suspendaccount {
+    width: 706px;
+    height: 309px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: #FFFFFF;
+}
+
+.suspendaccount h2 {
+    width: 658px;
+    margin: 26px auto 16px auto;
+    font-family: Outfit;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #252525;
+
+}
+
+
+.suspendordeletetext {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -1.1%;
+    color: #8F8F8F;
+
+}
+
+.verifytodeleteorsuspend {
+    display: flex;
+    align-self: flex-end;
+    gap: 16px;
+
+}
+
+.unsuresuspendordelete {
+    height: 53px;
+    gap: 16px;
+    display: flex;
+    align-items: center;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -1.1%;
+}
+
+.suspendordelete {
+    width: 175px;
+    height: 53px;
+    gap: 16px;
+    display: flex;
+    align-items: center;
+    background: #1B9D2F;
+    color: #FFFFFF;
+    border-radius: 16px;
+    justify-content: center;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+}

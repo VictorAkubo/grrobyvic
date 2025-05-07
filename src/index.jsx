@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import '@fontsource/nunito';
+import '@fontsource/outfit';
+import '@fontsource/urbanist';
+import '@fontsource/lato';
+import '@fontsource/montserrat';
+import '@fontsource/lexend';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

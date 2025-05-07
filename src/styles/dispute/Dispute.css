@@ -1,100 +1,101 @@
-.manage-dispute-container {
-    display: flex;
-    height: 100vh;
-    background: #f9f9f9;
-}
-
-.sidebar {
-    width: 250px;
-    background: #eaf8e6;
-    padding: 20px;
+.dispute-orders-table-maindiv {
     display: flex;
     flex-direction: column;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    padding: 10px 0;
-    cursor: pointer;
-}
-
-nav ul .active {
-    background: #4caf50;
-    border-radius: 5px;
-    color: white;
-    padding-left: 10px;
-}
-
-.content {
-    flex: 1;
-    padding: 20px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
+    width: 1110px;
+    height: 845px;
+    border-radius: 20px;
+    padding: 40px 28px 60px 28 px;
+    gap: 16px;
     align-items: center;
-    margin-bottom: 20px;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+
 }
 
-.dispute-section {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+.dispute-orders-table {
+    width: 1054px;
+    height: 692px;
+    border-radius: 24px;
+    padding: 32px;
+    gap: 16px;
+    margin: 0 auto;
+
 }
 
-.dispute-table-container {
-    overflow-x: auto;
-}
-
-.dispute-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.dispute-table th, .dispute-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.dispute-table th {
-    background: #f1f1f1;
-    font-weight: bold;
-}
-
-.status.delivered {
-    color: green;
-    font-weight: bold;
-}
-
-.view-order {
-    background: #4caf50;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.pagination {
+.disputes {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+    flex-direction: column;
+    border-bottom: 1px solid #4F4F4F47;
+    width: 990px;
+    height: 144px;
+    gap: 16px;
+    padding-right: 24px;
+    padding-left: 24px;
+    margin-bottom: 16px;
+
 }
 
-.page-number {
-    font-weight: bold;
+.disputes .description {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: -2%;
+
+}
+
+.disputes .response {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -2%;
+}
+
+.headerimageandnameanddate {
+    display: flex;
+    align-items: center;
+    gap: 29px;
+    height: 40px;
+
+}
+
+.headerimageandnameanddate .dsiputedate {
+    display:flex;
+    font-family: Outfit;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    align-items: center;
+margin-top: 10px;;
+
+}
+
+.headerimageandnameanddate .headerimageandname {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+}
+
+.headerimageandname img {
+    width: 40px;
+    height: 40px;
+
+}
+
+.headerimageandname h2 {
+    font-family: Outfit;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+.disputes .response {
+    font-size: 15px;
+    font-weight: 800;
 }

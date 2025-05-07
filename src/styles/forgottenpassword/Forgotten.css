@@ -1,23 +1,25 @@
+.forgottenpasswordandotp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
 .forgot-password-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #f8f8f8;
+    justify-content: space-between;
+    width: 1440px;
+    background: #FFFFFF;
+    margin: 0 auto;
 }
 
 /* Header */
-.header {
-    width: 100%;
-    padding: 20px 50px;
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    width: 100px;
-}
 
 /* Forgot Password Box */
 .forgot-password-box {
@@ -26,74 +28,199 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    margin-top: 30px;
+    width: 1000px;
+    height: 605px;
+    border-radius: 32px;
+    border-width: 1px;
+    border: 1px solid #A0C077;
+    margin: 0 auto;
 }
 
 .left {
-    padding: 30px;
-    background: #ecffe5;
-    width: 50%;
+    /*   padding: 30px; */
+    background: #F9FFEF;
+    width: 540px;
+    height: 605px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: flex-start;
 }
 
-.back-button {
+.forgot-back-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    background: #F9FCF6;
+    background: #FFFFFF;
     /* Closer to a white-green mix */
-    border: 1px solid #E0E8D9;
     /* Softer, muted greenish-gray border */
-    padding: 8px 16px;
-    border-radius: 5px;
+    border-radius: 20px;
+    width: 123px;
+    height: 70px;
+    font-family: Lexend;
+    font-weight: 400;
     font-size: 16px;
-    cursor: pointer;
-    color: #333;
-    font-weight: bold;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1A0F28;
+    border: 2px solid #A0C077
 }
 
-h2 {
-    margin: 10px 0;
+.forgot-back-button img {
+    width: 24.000000953674325px;
+    height: 24.000000000000014px;
+    border-width: 1.5px;
+
 }
 
-p {
-    color: #666;
+.forgotpasswordanddescription {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.forgotpasswordanddescription h2 {
+    /*  margin: 10px 0; */
+    font-family: Lexend;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    color: #1A0F28;
+
+}
+
+.forgotpasswordanddescription p {
+    font-family: Lexend;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1A0F28;
+
+}
+
+
+.greenlabelemailandinput {
+    display: flex;
+    flex-direction: column;
+    width: 451px;
+    height: 70px;
+    display: flex;
+    background: #F3F3F3;
+    border-radius: 20px;
+    border: 1.5px solid #EDEDED;
+    margin: 0 auto;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.forgotactive {
+    display: flex;
+    flex-direction: column;
+    width: 451px;
+    height: 70px;
+    border-radius: 20px;
+    margin: 0 auto;
+    align-content: flex-start;
+    border: 1.5px solid #A0C077;
+    background: #F3F3F3;
+    overflow: hidden;
+}
+
+.forgotactive input {
+    max-width: 451px;
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background: #F3F3F3;
+    /* padding-left: 25px; */
+}
+
+.forgotactive label {
+    font-family: Lexend;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1B9D2F;
+    padding-top: 10px;
+    padding-left: 23px;
+    display: flex;
+}
+
+.greenlabelemailandinput label {
+    display: none;
+}
+
+.greenlabelemailandinput input {
+    max-width: 451px;
+    height: 70px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background: #F3F3F3;
+
+
 }
 
 .email-input {
-    width: calc(100% - 20px);
-    /* Adjust width to align properly */
-    display: block;
-}
-
-.submit-button {
-    width: calc(100% - 20px);
-    /* Ensure same width as input */
-    display: block;
-}
-
-.email-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.submit-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: green;
-    color: white;
     border: none;
     border-radius: 5px;
-    margin-top: 20px;
+    margin: 0 auto;
+    width: 451px;
+    height: 70px;
+    background: #F3F3F3;
+}
+
+.email-input::placeholder {
+    font-family: Lexend;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #1A0F28;
+    opacity: 0.5;
+}
+
+.email-input {
+    padding-left: 20px;
+    padding-right: 0px;
+}
+
+.submitbuttonemail {
+    display: flex;
+    background: #1B9D2F;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    border: none;
     cursor: pointer;
+    font-family: Lexend;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    vertical-align: middle;
+
+
+
+    width: 460px;
+    height: 71px;
+    gap: 10px;
+    border-radius: 16px;
+
+
 }
 
 .right {
-    width: 50%;
+    width: 443px;
+    height: 605px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 32px;
+
 }
 
 .image {
@@ -104,13 +231,11 @@ p {
 
 /* Footer */
 .footer {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    color: #666;
-    margin-top: 30px;
+    width: 100%;
+    margin: 0 auto 0 50px;
 }
 
 .social-icons {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/staffs/StaffsTable.css";
+import { useNavigate } from "react-router-dom";
 const StaffsTable = ({ data, rowsPerPage }) => {
   const [status, setStatus] = useState("All Orders");
   const totalPages = Math.ceil(data.length / rowsPerPage);
@@ -33,74 +34,86 @@ const StaffsTable = ({ data, rowsPerPage }) => {
     setFilter(status);
     setCurrentPage(1); // Reset to first page when filter changes
   };
+  const navigate = useNavigate()
 
   return (
-    <div className="tablesortandtable">
-      <div className="add_driver">
-        <img src="/assets/add.svg" alt="" />
-        <p>Add New Driver</p>
-      </div>
-      <div className="table-container">
-        <table>
-          <thead>
+    <div className="stafftablesortandtable">
+
+      <div className="stafftable-container">
+        <div className="stafftable-containerheader">
+          <div className="id">
+            <h2>ID</h2>
+            <img src="dropIcon.svg" />
+          </div>
+          <div className="User">
+            <h2>User</h2>
+            <img src="dropIcon.svg" />
+          </div>
+          <div className="Email">
+            <h2>Email</h2>
+            <img src="dropIcon.svg" />
+          </div>
+          <div className="Date">
+            <h2>Date Joined</h2>
+            <img src="dropIcon.svg" />
+          </div>
+          <div className="Phone">
+            <h2>Phone Number</h2>
+            <img src="dropIcon.svg" />
+          </div>
+          <div className="Action">
+            <h2>Action</h2>
+          </div>
+        </div>
+        <div className="stafftable-containerbody">
+          {currentData.length > 0 ? (
+            currentData.map((row, index) => (
+              <div className="stafftable-containerrow">
+                <div className="id">
+                  {currentPage <= 1 ? index + 1 : indexOfFirstRow + index + 1}
+                </div>
+                <div className="User" onClick={()=>navigate("/staff/specificstaff")}>
+                  <img src={row["Profile Picture"]} alt="" />
+                  <span>{row.user}</span>
+                </div>
+                <div className="Email">
+                  {row.email}
+                </div>
+                <div className="Date">
+                  {row.date}
+                </div >
+                <div className="Phone">
+                  {row["Phone Number"]}
+                </div >
+                <div className="Action">
+                  <img src="/ellipsis.svg" alt="" />
+                </div >
+              </div >
+            ))
+          ) : (
             <tr>
-              <th>ID</th>
-              <th>User</th>
-              <th>Email</th>
-              <th>Date Joined</th>
-              <th>Phone Number</th>
-              <th>Action</th>
+              <td colSpan="8" className="no-data">
+                No data available
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {currentData.length > 0 ? (
-              currentData.map((row, index) => (
-                <tr>
-                  <td>
-                    {" "}
-                    {currentPage <= 1 ? index + 1 : indexOfFirstRow + index + 1}
-                  </td>
-                  <td className="businessandlogo">
-                    {" "}
-                    <img src={row["Profile Picture"]} alt="" />{" "}
-                    <span>{row.user}</span>
-                  </td>
-                  <td className="items">{row.email}</td>
-                  <td>
-                    <p>{row.date}</p>
-                  </td>
-                  <td>{row["Phone Number"]}</td>
-                  <td className="actionandmessage">
-                    <img src="/assets/ellipsis.svg" alt="" />
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="8" className="no-data">
-                  No data available
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+          )}
+        </div>
+      </div >
       {/* Pagination Controls */}
-      <div className="pagination">
+      < div className="pagination" >
         <div
           className="previous"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
-          <img src="/assets/Vector.svg" alt="" />
+          <img src="/left.svg" alt="" />
           Back
         </div>
         <div className="numbering">
           {Array.from({ length: totalPages }, (_, i) => (
             <div
-              className={`allpagebutton ${
-                currentPage === i + 1 ? "pagebuttonactive" : "pagebutton"
-              }`}
+              className={`allpagebutton ${currentPage === i + 1 ? "pagebuttonactive" : "pagebutton"
+                }`}
               key={i + 1}
               onClick={() => changePage(i + 1)}
             >
@@ -118,10 +131,10 @@ const StaffsTable = ({ data, rowsPerPage }) => {
           disabled={indexOfLastRow >= data.length}
         >
           Next
-          <img src="/assets/Vector.svg" alt="" />
+          <img src="/right.svg" alt="" />
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

@@ -1,36 +1,37 @@
 import React, { useState } from 'react'
 import "../styles/Login.css"
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [input, setInput] = useState("")
+    const navigate = useNavigate()
     return (
         <div className='login'>
+            <h2 className='loginlogo'><img src="/GRRO.svg" /></h2>
             <div className="form">
-                <h2 className='logo'>GRRO</h2>
                 <div className="headingwelcome">
                     <h1 className='welcometext'>Hi, Welcome Back</h1>
                     <p className="instruction">Please fill in your details to get access</p>
                 </div>
-                <div className="googlebtn">Sign in with Google</div>
-                <div className="or">
-                    <p></p>
-                    <h5>or</h5>
-                    <p></p>
+                <div onClick={() => setInput("inputemail")} className={` ${input === "inputemail" ? "emailactive" : "emailnotactive"}`} >
+                    {
+                        input === "inputemail" && <label for="email">Email Address</label>
+                    }
+                    <input type="email" id="email" onClick={() => setActiveforgotpassword(true)} placeholder="Enter Email Address" className="email" readonly />
                 </div>
-                <div onClick={() => setInput("inputekmail")} className={`email ${input === "inputemail" ? "active" : "notactive"}`} >
-                    <p>Email Address</p>
-                    <input className={`${input === "inputemail" ? "active" : "notactive"}`} />
+                <div onClick={() => setInput("inputpassword")} className={` ${input === "inputpassword" ? "activepassword" : "passwordinput"}`} >
+                    <div>
+                        {
+                           input === "inputpassword" && <label for="email">Password</label>
+                        }
+                        <input placeholder="Password" className="password" />
+                    </div>
+                    <h3>Show</h3>
                 </div>
-                <div onClick={() => setInput("inputpassword")} className={`password ${input === "inputpassword" ? "active" : "notactive"}`} >
-                    <input className={`${input === "inputpassword" ? "active" : "notactive"}`} />
-                    <p>Show</p>
-                </div>
-                <h5 className="forgotpassword">Forgot Password ?</h5>
+                <h5 className="forgotpassword" onClick={() => navigate("/forgottenpassword")}>Forgot Password ?</h5>
                 <div className="registerbtn">Sign in</div>
-                <p className="">Not Registered Yet? <span>Create an Account</span></p>
-                <p>Continue as guest</p>
             </div>
-            <img className='sideimage' src="./assets/frame.png" alt='' />
+            <img className='sideimage' src="/logingreenimage.png" alt='' />
         </div>
     )
 }

@@ -1,22 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/products/ProductsTable.css"; // Import CSS
 import { useNavigate } from "react-router-dom";
+import Outofstock from "./Outofstock";
+import ProductAvailable from "./ProductAvailable";
+import ProductDelete from "./ProductDelete";
 
 const dummyData = [
-  { menuitems :"Mango", category: "Bulk ", date:"15/10/2020", price: 30, status: "Draft" },
-  { menuitems: "Beans", category: "Mixed ", date:"15/10/2020", price: 19, status: "Out of Stock" },
-  { menuitems: "Rice ", category: "Bulk ", date:"15/10/2020", price: 34, status: "Available" },
-  { menuitems: "Groundnut oil ", category: "Pieces ", date:"15/10/2020", price: 89, status: "Out of Stock" },
-  { menuitems: "Beans", category: "Mixed ", date:"15/10/2020", price: 99, status: "Available" },
-  { menuitems: "Lemon", category: "Pieces ", date:"15/10/2020", price: 76, status: "Out of Stock" },
-  { menuitems: "Flour", category: "Pieces ", date:"15/10/2020", price: 89, status: "Available" },
+  { menuitems: "Mango", category: "Bulk ", date: "15/10/2020 6:20PM", price: 50, status: "Draft" },
+  { menuitems: "Beans", category: "Mixed ", date: "15/10/2020 6:20PM", price: 55, status: "Out of Stock" },
+  { menuitems: "Rice ", category: "Bulk ", date: "15/10/2020 6:20PM", price: 50, status: "Available" },
+  { menuitems: "Groundnut oil ", category: "Pieces ", date: "15/10/2020 6:20PM", price: 100, status: "Out of Stock" },
+  { menuitems: "Beans", category: "Mixed ", date: "15/10/2020 6:20PM", price: 55, status: "Available" },
+  { menuitems: "Lemon", category: "Pieces ", date: "15/10/2020 6:20PM", price: 50, status: "Out of Stock" },
+  { menuitems: "Flour", category: "Pieces ", date: "15/10/2020 6:20PM", price: 55, status: "Available" },
 ];
 
-const ProductsTable  = () => {
+const ProductsTable = () => {
   const navigate = useNavigate();
-  const rowsPerPage = 7;
+  const rowsPerPage = 6;
   const [status, setStatus] = useState("All Bargains");
+  const [activeActionIndex, setActiveActionIndex] = useState(null);
+  const [outofstock, setOutofstock] = useState(false);
+  const [productAvailable, setProductAvailable] = useState(false);
+  const [productDelete, setProductDelete] = useState(false);
+
+
+
   const totalPages = Math.ceil(dummyData.length / rowsPerPage);
+  const useTruncate = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + "..."
+  }
   /*  
 
 
@@ -62,70 +76,142 @@ const ProductsTable  = () => {
 
 
   return (
-    <div className="tablesortandtable">
-      <div onClick={()=>navigate("/product/add_new_product")} className="add_driver">
-        <img src="/assets/add.svg" alt="" />
-        <p>Add New Menu</p>
+    <div className="producttablesortandtable">
+      {
+        outofstock && (
+          <>
+            <div className="modal-backdrop" onClick={() => setOutofstock(false)} />
+            <Outofstock setOutofstock={setOutofstock} />
+          </>
+        ) || productAvailable && (
+          <>
+            <div className="modal-backdrop" onClick={() => setProductAvailable(false)} />
+            <ProductAvailable />
+          </>
+
+        )
+        || productDelete && (
+          <>
+            <div className="modal-backdrop" onClick={() => setProductDelete(false)} />
+            <ProductDelete outofstock={setOutofstock} />
+          </>
+        )
+      }
+      <div className="add_productbuttonnowdiv">
+        <div onClick={() => navigate("/product/add_new_product")} className="add_productbuttonnow">
+          <img src="/bigplus.svg" alt="" />
+          <p>Add New Menu</p>
+        </div>
       </div>
-      <div className="tablecontainerbargain">
-        <table>
+      <div className="product-orders-table-maindiv">
+        <table className="product-orders-table">
           <thead>
             <tr>
-              <th>Menu Items </th>
-              <th>Caregory </th>
-              <th>Date Added<span><img src="/assets/downarrow.svg" alt="" /></span></th>
-              <th>Status </th>
-              <th>Price</th>
-              <th></th>
+              <th className="product-orders-tables Menuitem">
+                <p>Menu Items </p>
+                <div>
+                  <p></p>
+                </div>
+              </th>
+              <th className="product-orders-tables Category">
+                <p>Caregory</p>
+              </th>
+              <th className="product-orders-tables Date">
+                <p>Date Added</p>
+                <img src="/arrowdownward.svg" />
+              </th>
+              <th className="product-orders-tables Status">
+                <p>Status</p>
+              </th>
+              <th className="product-orders-tables Price">
+                <p> Price</p>
+              </th>
+              <th className="product-orders-tables Action">
+              </th>
             </tr>
           </thead>
           <tbody>
             {currentRows.map((row, index) => (
-              <tr onClick={()=>navigate("/product/item")} key={row.id}>
-                <td className="imageanditem"><img className="itemimage" src="mail-dynamic-color.png"/> <span>{row.menuitems}</span></td>
-                <td className="items">{row.category}</td>
-                <td>{row.date}</td>
-                <td><div className={row.status === "Available" ? "approved" : row.status === "Out of Stock" ? "declined" : "draft"}>{row.status}</div></td>
-                <td>${row.price}</td>
-                <td>--- </td>
+              <tr key={row.id}>
+                <td onClick={() => navigate("/product/item")} className="Menuitem MenuitemandImage product-orders-tablebody">
+                  <img className="itemimages" src="/Octocat.png" />
+                  {row.menuitems}
+                </td>
+                <td className="Category product-orders-tablebody">{row.category}</td>
+                <td className="Date product-orders-tablebody">{row.date}</td>
+                <td className="Status product-orders-tablebody">
+                  <div className={row.status === "Available" ? "available" : row.status === "Out of Stock" ? "outofstockstatus" : "draft"}>{row.status}</div>
+                </td>
+                <td className="Price product-orders-tablebody">${row.price}.00</td>
+                <td className="modalareaaction Action product-orders-tablebody">
+                  <p
+                    className="cursorellipsis"
+                    onClick={() =>
+                      setActiveActionIndex(
+                        activeActionIndex === index ? null : index
+                      )
+                    }
+                  >
+                    <img src="/ellipsis.svg" />
+                  </p>
+                  {activeActionIndex === index && (
+                    <ul className="productaction">
+                      <li className="normal underline">
+                        <img src="/vieworder.svg" /> View Product
+                      </li>
+                      <li className="normal underline">
+                        <img src="/edit.svg" /> Edit Product
+                      </li>
+                      <li className="normal underline" onClick={() => setProductAvailable(true)}>
+                        <img src="/approveorder.svg" /> Available
+                      </li>
+                      <li className="normal underline" onClick={() => setOutofstock(true)}>
+                        <img src="/cancelorder.svg" /> Out of Stock
+                      </li>
+                      <li className="normal delete" onClick={() => setProductDelete(true)}>
+                        <img src="/trash.svg" /> Delete Product
+                      </li>
+                    </ul>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <div className="productpagination">
+          <div className={currentPage === 1 ? "disabled" : "previous"}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            <img src="/left.svg" alt="" />
+            Back
+          </div>
+          <div className="numbering">
+
+            {Array.from({ length: totalPages }, (_, i) => (
+              <div
+                className={`allpagebutton ${currentPage === i + 1 ? "pagebuttonactive" : "pagebutton"}`}
+                key={i + 1}
+                onClick={() => changePage(i + 1)}
+              >
+                {i + 1}
+              </div>
+            ))}
+          </div>
+          <div className={indexOfLastRow >= dummyData.length ? "disabled" : "next"}
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(dummyData.length / rowsPerPage)))}
+            disabled={indexOfLastRow >= dummyData.length}
+          >
+            Next
+            <img src="/right.svg" alt="" />
+          </div>
+        </div>
       </div>
       {/* Pagination */}
-      <div className="pagination">
-        <div className="previous"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          <img src="/assets/Vector.svg" alt="" />
-          Back
-        </div>
-        <div className="numbering">
-
-          {Array.from({ length: totalPages }, (_, i) => (
-            <div
-              className={`allpagebutton ${currentPage === i + 1 ? "pagebuttonactive" : "pagebutton"}`}
-              key={i + 1}
-              onClick={() => changePage(i + 1)}
-            >
-              {i + 1}
-            </div>
-          ))}
-        </div>
-        <div className="next"
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(dummyData.length / rowsPerPage)))}
-          disabled={indexOfLastRow >= dummyData.length}
-        >
-          Next
-          <img src="/assets/Vector.svg" alt="" />
-        </div>
-      </div>
-    </div>
+    </div >
   );
 };
 
-export default ProductsTable ;
+export default ProductsTable;
 
 

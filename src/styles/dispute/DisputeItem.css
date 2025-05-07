@@ -1,0 +1,165 @@
+.disputeitem {
+    width: 1185px;
+    margin: 0px auto;
+}
+
+.userprofilediv {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 706px;
+    height: 380px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    margin-top: 24px;
+    gap: 12px;
+}
+
+.titleuserprofile {
+    font-family: Outfit;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+}
+
+.userProfile {
+    display: flex;
+    width: 658px;
+    height: 269px;
+    gap: 25px;
+    justify-content: space-between;
+}
+
+.userProfile .leftsectionprofiledata {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -1.1%;
+}
+
+.userProfile .rightsectionprofiledata {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-family: Outfit;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -1.1%;
+    text-align: right;
+
+}
+
+.userProfile ul {
+    list-style: none;
+    text-decoration: none;
+}
+
+.responseandinput {
+    width: 1094px;
+    height: 471px;
+    top: 576px;
+    left: 372px;
+    border-radius: 24px;
+    padding: 32px;
+    gap: 16px;
+
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    margin-top: 14px;
+}
+
+.userresponse {
+    width: 1030px;
+    height: 100px;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -2%;
+} 
+
+.headercalledresponse {
+    font-family: Outfit;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+}
+
+.responseandinput textarea {
+    width: 1030px;
+    height: 142px;
+    border-radius: 20px;
+    background: #C4C4C41F;
+    outline: none;
+    border: none;
+    padding: 10px;
+}
+
+.responseandinput textarea::placeholder {
+    font-family: Outfit;
+    font-weight: 400;
+    font-size: 13.6px;
+    line-height: 16.63px;
+    letter-spacing: 0px;
+}
+
+.disputeprofilebtn {
+    display: flex;
+    width: 361px;
+    height: 53px;
+    gap: 11px;
+}
+
+.disputeprofilebtn .raiseticket {
+    color: #FF0000;
+    width: 175px;
+    height: 53px;
+    border-radius: 16px;
+    gap: 16px;
+    border-width: 1px;
+    padding-top: 14px;
+    padding-right: 24px;
+    padding-bottom: 14px;
+    padding-left: 24px;
+    border: 1px solid #FF0000;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+
+}
+
+.disputeprofilebtn .post {
+    color: #FFFFFF;
+    width: 175px;
+    height: 53px;
+    border-radius: 16px;
+    gap: 16px;
+    border-width: 1px;
+    padding-top: 14px;
+    padding-right: 24px;
+    padding-bottom: 14px;
+    padding-left: 24px;
+    background: #1B9D2F;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+
+}

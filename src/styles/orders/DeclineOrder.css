@@ -1,0 +1,81 @@
+.declineordermodal {
+    width: 700px;
+    height: 357px;
+    border-radius: 20px;
+    border-width: 1px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 2100;
+    background-color: white;
+    gap: 25px;
+}
+
+.declineordermodalheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 620px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.declineordermodalheader h3 {
+    font-family: Urbanist;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 105%;
+    letter-spacing: 0%;
+    color: #3E3E3E;
+
+}
+
+.declineordermodalheader img {
+    width: 18.55px;
+    height: 18.55px;
+}
+
+.declineordermodal textarea {
+    margin: 0 auto;
+    width: 620px;
+    height: 125px;
+    border-radius: 20px;
+    border-width: 3px;
+    border: 3px solid #A0C077;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.declineordermodal textarea::placeholder {
+    font-family: Nunito;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: 1%;
+    color: #A0C077;
+
+}
+
+.declineordermodal .reaonbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 620px;
+    height: 64px;
+    border-radius: 15px;
+    margin: 0 auto;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    font-family: Nunito;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: 1%;
+
+}

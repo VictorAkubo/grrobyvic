@@ -11,25 +11,22 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    { name: "Dashboard", path: "/" , icon: "/dashboard.svg" },
-    { name: "Product", path: "/product", icon: "/products.svg" },
-    { name: "Dispute", path: "/dispute", icon: "/disputes.svg" },
-    { name: "Orders", path: "/orders", icon: "/orders.svg" },
-    { name: "Bargain", path: "/bargain", icon: "/bargains.svg" },
-    { name: "Review", path: "/review", icon: "/reviews.svg" },
-    { name: "Settings", path: "/settings", icon: "/settings.svg" },
-    { name: "Customers", path: "/customers", icon: "/customers.svg" },
-    { name: "Staff", path: "/staff", icon: "/staffs.svg" },
-   /*  { name: "Driver", path: "/driver", icon: "/driver.svg" }, */
+    { name: "Dashboard", path: "/", icon: "/grroicons/dashboard.svg", iconActive: "/active/dashboardactive.svg" },
+    { name: "Product", path: "/product", icon: "/grroicons/product.svg", iconActive: "/active/productactive.svg" },
+    { name: "Dispute", path: "/dispute", icon: "/grroicons/dispute.svg", iconActive: "/active/disputeactive.svg" },
+    { name: "Orders", path: "/orders", icon: "/grroicons/orders.svg", iconActive: "/active/ordersactive.svg" },
+    { name: "Bargain", path: "/bargain", icon: "/grroicons/bargain.svg", iconActive: "/active/bargainactive.svg" },
+    { name: "Review", path: "/review", icon: "/grroicons/review.svg", iconActive: "/active/reviewactive.svg" },
+    { name: "Settings", path: "/settings", icon: "/grroicons/settings.svg", iconActive: "/active/settingsactive.svg" },
+    { name: "Customers", path: "/customers", icon: "/grroicons/customers.svg", iconActive: "/active/customersactive.svg" },
+    { name: "Staff", path: "/staff", icon: "/grroicons/staff.svg", iconActive: "/active/staffactive.svg" },
+    /* { name: "Driver", path: "/driver", icon: "/grroicons/drivers.svg", iconActive: "/active/driveractive.svg" }, */
   ];
 
   return (
-    <div className={`sidebar`}>
+    <div className='sidebar' >
       <div className="sidebar-header">
-        <img src="GRRO.svg"  className="logo" />
-        {/* <button className="toggle-btn" onClick={handleToggle}>
-          ☰
-        </button> */}
+        <img src="/GRRO.svg" className="logo" />
       </div>
       <ul className="sidebar-menu">
         {menuItems.map((item) => {
@@ -40,19 +37,16 @@ const Sidebar = () => {
               ? location.pathname === item.path
               : location.pathname.startsWith(item.path);
           return (
-            <li key={item.name} className={isActive ? "active" : ""}>
-              <Link  className={isActive ? "active" : "unactive"} to={item.path}>
-                <img src={item.icon} className="sidebaricon" />
-
-                <h3 className={isActive ? "active" : ""}>{item.name}</h3>
-              
+            <li key={item.name} className={`wholeroutes ${isActive ? "active" : ""}`}>
+              <Link to={item.path}>
+                <img src={isActive ? item.iconActive : item.icon} className={item.name === "Dispute" ? "disputeclass" : ""} />
+                <h3>{item.name}</h3>
               </Link>
-              
             </li>
           );
         })}
       </ul>
-    </div>
+    </div >
   );
 };
 

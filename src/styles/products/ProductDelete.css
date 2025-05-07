@@ -1,0 +1,110 @@
+.productdelete {
+    width: 600px;
+    height: 287px;
+    border-radius: 20px;
+    border-width: 1px;
+    border: 1px solid #A0C077;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.productdeletedetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 45px;
+    width: 486px;
+    margin: 17px auto 0 auto;
+}
+
+.productdeleteimg {
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.productdeleteimg img {
+    width: 18.2px;
+    height: 18.2px;
+    align-self: flex-end;
+}
+
+.productdeletetitleanddetail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.productdelete h3 {
+    display: flex;
+    width: 486px;
+    font-family: Nunito;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 105%;
+    letter-spacing: 0%;
+    color: #3E3E3E;
+}
+
+.productdelete p {
+    width: 486px;
+    display: flex;
+    font-family: Nunito;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: #3E3E3E;
+}
+
+
+.productdeleteconfirmationbtn {
+    display: flex;
+    width: 486px;
+    height: 64px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.productdeleteconfirmationbtn .confirm {
+    width: 213px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    border-radius: 15px;
+    gap: 10px;
+    background-color: #1B9D2F;
+    font-family: Nunito;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: 1%;
+    color: #FFFFFF;
+}
+
+.productdeleteconfirmationbtn .decline {
+    width: 213px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    border-radius: 15px;
+    gap: 10px;
+    background-color: #FF0000;
+    font-family: Nunito;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: 1%;
+    color: #FFFFFF;
+}

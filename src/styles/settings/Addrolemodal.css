@@ -1,0 +1,143 @@
+.addrolemodal {
+    display: flex;
+    flex-direction: column;
+    width: 706px;
+    height: 404px;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 2100;
+    background-color: white;
+}
+
+.addrolemodal .addroletile {
+    width: 658px;
+    font-family: Outfit;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #252525;
+    margin: 16px auto 25px auto;
+}
+
+.generaladdroleinputs {
+    display: flex;
+    flex-direction: column;
+    width: 658px;
+    height: 301.2535400390625px;
+    gap: 26px;
+    margin: 0 auto;
+
+}
+
+.headerwithinputaddrole {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headertitleforaddrole {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -1.1%;
+    color: #8F8F8F;
+
+}
+
+.generalinputdivforaddrole {
+    width: 380.9211730957031px;
+    height: 49.12673568725586px;
+
+}
+
+.greenheaderforaddrole {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16.63px;
+    letter-spacing: 0px;
+    color: #1B9D2F;
+}
+
+.inputanddropdownforaddrole {
+    display: flex;
+    align-items: center;
+}
+
+.inputanddropdownforaddrole input {
+    width: 380.9211730957031px;
+    outline: none;
+    border: none;
+    font-family: Outfit;
+    font-weight: 400;
+    font-size: 13.6px;
+    line-height: 16.63px;
+    letter-spacing: 0px;
+    color: #343434;
+}
+
+.inputanddropdownforaddrole img {
+    width: 20px;
+    height: 20px;
+    angle: -90 deg;
+
+}
+
+.addedpermissions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 658px;
+    gap: 15px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.permission {
+    background: #F9FFEF;
+    width: 108px;
+    height: 20px;
+    border-radius: 8px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    gap: 8px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    margin: 0;
+}
+
+.permission img {
+    width: 16px;
+    height: 16px;
+}
+
+.addrolebtn {
+    align-self: flex-end;
+    width: 175px;
+    height: 53px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    color: #FFFFFF;
+    background-color: #1B9D2F;
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+
+}

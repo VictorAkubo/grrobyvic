@@ -1,15 +1,16 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import "../../styles/forgottenpassword/ForgottenPasswordOTP.css"
 
 
 const ForgottenPasswordOTP = () => {
-  const navigate= useNavigate();
-  const verifyOTP=()=>{
+  const [active, setActive] = useState(false)
+  const navigate = useNavigate();
+  const verifyOTP = () => {
     navigate("/setnewpassword")
   }
- const inputRefs = useRef([]);
+  const inputRefs = useRef([]);
 
 
 
@@ -22,54 +23,55 @@ const ForgottenPasswordOTP = () => {
   };
 
   return (
-    <div class="email-verification-container">
-      <header class="header">
-        <img src="logo.png" alt="Logo" class="logo" />
-      </header>
-
-      <div class="email-verification-box">
-        <div class="left">
-          <button class="back-button">�� Back</button>
-          <h2>Email verification</h2>
-          <p>An OTP code has been sent to your email</p>
-          <p class="email">Joetobaj@demo.com</p>
-
-          <div class="otp-inputs">
-            {[...Array(5)].map((_, index) => (
-              <input
-                key={index}
-                type="text"
-                maxlength="1"
-                class="otp-box"
-                ref={(el) => (inputRefs.current[index] = el)}
-                onInput={(e) => handleInput(e, index)}
-              />
-            ))}
+    <body className='forgottenpasswordandotp'>
+      <div className='loginlogo'><img src="/GRRO.svg" /></div>
+      <div className="forgot-password-container">
+        <div className="forgot-password-box" >
+          <div className="left">
+            <div className="forgot-back-button" onClick={() => navigate("/forgottenpassword")}><img src='/left.svg' /> Back</div>
+            <div className='forgotpasswordanddescription'>
+              <h2>Email verification</h2>
+              <p>An OTP code has been sent to your email <br /> <span className="emailentered">Joetobaj@demo.com</span></p>
+            </div>
+            <div className="otp-inputs">
+              <div className='otpboxes'>
+                {[...Array(5)].map((_, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    onClick={() => setActive(index)}
+                    maxlength="1"
+                    className={`otp-box ${active === index ? "activesingleinput" : "otp-box"}`}
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    onInput={(e) => { handleInput(e, index); setActive(index) }}
+                  />
+                ))}
+              </div>
+              <p className="resend-text">Didn't receive any code? <a href="#" className="resend-link">Resend</a> </p>
+            </div>
+            <div className="submitbuttonemail" onClick={verifyOTP}>Submit Number</div>
           </div>
-
-          <p class="resend-text">
-            Didn��t receive any code? <a href="#" class="resend-link">Resend</a>
-          </p>
-
-          <button class="submit-button" onClick={verifyOTP}>Submit Number</button>
-        </div>
-        <div class="right">
-          <img src="female.jpeg" alt="Smiling woman" class="image" />
+          <div className="right">
+            <img src="woman.png" alt="Smiling woman" className="image" />
+          </div>
         </div>
       </div>
-
-      <footer class="footer">
-        <p>? 2024 Groa Fresh. All rights reserved.</p>
-        <p>Contact Us @ info@groafresh.com</p>
-        <div class="social-icons">
-          <span>? ? ?</span>
+      <footer className="footer">
+        <p className="reserved">© 2024 Grro Fresh. All rights reserved.</p>
+        <p className='contactus'>Contact Us @ info@groafresh.com</p>
+        <div className="social-icons">
+          <img src="/Facebook.svg" />
+          <img src="/Instagram.svg" />
+          <img src="/X.svg" />
+          <img src="/LinkedIn.svg" />
+          <img src="/Youtube.svg" />
         </div>
       </footer>
-    </div>
+    </body>
   );
 
 
- 
+
 }
 
 export default ForgottenPasswordOTP

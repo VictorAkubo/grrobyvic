@@ -1,0 +1,49 @@
+.selectdrivermodal {
+    width: 700px;
+    height: 357px;
+    border-radius: 20px;
+    border-width: 1px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 2100;
+    background-color: white;
+    gap: 25px;
+}
+
+.selectdrivermodalheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 620px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.selectdrivermodalheader h3 {
+    font-family: Urbanist;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 105%;
+    letter-spacing: 0%;
+    color: #3E3E3E;
+
+}
+.selectdriverdiv {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 209px;
+    gap: 3px;
+}
+
+.selectdriverimageandname{
+    display:flex;
+    align-items: center;
+}

@@ -6,7 +6,7 @@ const Orders = () => {
   let sampleData = [
     {
       id: 1,
-      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
+      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
       purchaseType: "Mixed",
       businessName: "Business",
       date: "12 Nov 2023",
@@ -14,7 +14,7 @@ const Orders = () => {
     },
     {
       id: 2,
-      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
+      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
       purchaseType: "Bulk",
       businessName: "Business",
       date: "12 Nov 2023",
@@ -22,7 +22,39 @@ const Orders = () => {
     },
     {
       id: 3,
-      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
+      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
+      purchaseType: "Bulk",
+      businessName: "Business",
+      date: "12 Nov 2023",
+      status: "Declined",
+    },
+    {
+      id: 4,
+      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
+      purchaseType: "Bulk",
+      businessName: "Business",
+      date: "12 Nov 2023",
+      status: "Declined",
+    },
+    {
+      id: 5,
+      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
+      purchaseType: "Bulk",
+      businessName: "Business",
+      date: "12 Nov 2023",
+      status: "Declined",
+    },
+    {
+      id: 6,
+      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
+      purchaseType: "Bulk",
+      businessName: "Business",
+      date: "12 Nov 2023",
+      status: "Declined",
+    },
+    {
+      id: 7,
+      items: "Item 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juiceItem 4 mangos and 6 tomatoes with a sardine sauce and 3 floppy juice",
       purchaseType: "Mixed",
       businessName: "Business",
       date: "12 Nov 2023",
