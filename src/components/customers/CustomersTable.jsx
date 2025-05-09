@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import "../../styles/customers/customersTable.css";
 import { useNavigate } from "react-router-dom";
+import "../../styles/customers/CustomersTable.css"
 
 const CustomersTable = ({ data, rowsPerPage }) => {
 
