@@ -27,12 +27,12 @@ const CustomersTable = ({ data, rowsPerPage }) => {
   useEffect(() => {
     localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
-  // Pagination logic
+  // customerspagination logic
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentData = data.slice(indexOfFirstRow, indexOfLastRow);
 
-  // Handle filter change and reset pagination
+  // Handle filter change and reset customerspagination
   const handleFilterChange = (status) => {
     setFilter(status);
     setCurrentPage(1); // Reset to first page when filter changes
@@ -101,8 +101,8 @@ const CustomersTable = ({ data, rowsPerPage }) => {
           )}
         </div>
       </div >
-      {/* Pagination Controls */}
-      < div className="pagination" >
+      {/* customerspagination Controls */}
+      < div className="customerspagination" >
         <div
           className="previous"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

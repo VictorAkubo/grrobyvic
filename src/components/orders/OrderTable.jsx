@@ -172,7 +172,7 @@ const OrderTable = ({ data, rowsPerPage }) => {
                     </>
                 )}
                 {/* Pagination Controls */}
-                <div className="pagination">
+                <div className="customerspagination">
                     <div className="previous"
                         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                         disabled={currentPage === 1}
