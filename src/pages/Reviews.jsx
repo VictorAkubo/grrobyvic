@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import "../styles/reviews/Reviews.css"; // Import CSS
 import { useNavigate } from "react-router-dom";
 import OrderNav from "../components/OrderNav";
+import axios from "axios";
+import formatDate from "../functions/DateConverter";
 
 const dummyData = [
-  { menuitems: "Mango", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, review: "amet consectetur adipisicing elit." },
-  { menuitems: "Beans", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, review: "amet consectetur adipisicing elit." },
-  { menuitems: "Rice ", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, review: "amet consectetur adipisicing elit." },
-  { menuitems: "Beans ", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 4.5, review: "amet consectetur adipisicing elit." },
-  { menuitems: "Beans", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, review: "amet consectetur adipisicing elit." },
-  { menuitems: "Lemon", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, review: "amet consectetur adipisicing elit." },
-  { menuitems: "Flour", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, review: "amet consectetur adipisicing elit." },
+  { menuitems: "Mango", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, comment: "amet consectetur adipisicing elit." },
+  { menuitems: "Beans", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, comment: "amet consectetur adipisicing elit." },
+  { menuitems: "Rice ", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, comment: "amet consectetur adipisicing elit." },
+  { menuitems: "Beans ", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 4.5, comment: "amet consectetur adipisicing elit." },
+  { menuitems: "Beans", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, comment: "amet consectetur adipisicing elit." },
+  { menuitems: "Lemon", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, comment: "amet consectetur adipisicing elit." },
+  { menuitems: "Flour", user: "Lorem ipsum dolor sit", date: "15/10/2020 6:20PM", rating: 5, comment: "amet consectetur adipisicing elit." },
 ];
 
 const Reviews = () => {
@@ -19,12 +21,54 @@ const Reviews = () => {
   const [status, setStatus] = useState("All Bargains");
   const [activeActionIndex, setActiveActionIndex] = useState(null);
 
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
 
 
-  const totalPages = Math.ceil(dummyData.length / rowsPerPage);
+  const fetchReviews = async () => {
+    try {
+      const response = await axios.get(
+        "https://grro-130ba33f07e0.herokuapp.com/api/v1/product/reviews/",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      );
+
+      // Access the 'data' object inside the response
+      const reviewsData = response.data.data;
+
+      // Save to state or use directly
+      setReviews(response.data.data.results);
+
+
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchReviews();
+    console.log(reviews)
+  }, []);
+
+  /* 
+  const fetchReviews=()=>{
+    /product/reviews/
+  
+  } */
+
+
+
+
+  const totalPages = Math.ceil(reviews.length / rowsPerPage);
   const useTruncate = (text, maxLength) => {
-    if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength) + "..."
+    if (text?.length <= maxLength) return text;
+    return text?.slice(0, maxLength) + "..."
   }
   /*  
 
@@ -52,7 +96,7 @@ const Reviews = () => {
     }
   };
   // Filter dummyData based on selected status
-  const filteredData = filter === "All Bargains" ? dummyData : dummyData.filter(item => item.status === filter);
+  const filteredData = filter === "All Bargains" ? reviews : reviews.filter(item => item.status === filter);
   useEffect(() => {
     localStorage.setItem("currentPage", currentPage);
 
@@ -60,7 +104,7 @@ const Reviews = () => {
   // Pagination logic
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
+  const currentRows = reviews.slice(indexOfFirstRow, indexOfLastRow);
 
   // Handle filter change and reset pagination
   const handleFilterChange = (status) => {
@@ -69,7 +113,33 @@ const Reviews = () => {
   };
 
 
+  const ReviewStars = ({ rating }) => {
+    const totalStars = 6;
+    const stars = [];
+    for (let i = 1; i <= totalStars; i++) {
+      if (i <= rating) {
+        stars.push(<img src="/star.svg" />)
+      } else {
+        stars.push(<img src="/emptystar.svg" />)
+      }
+    }
+    return <td className="Price review-orders-tablebody">{stars}</td>
+  }
+  const ReviewStarsModal = ({ rating }) => {
+    const totalStars = 6;
+    const stars = [];
+    for (let i = 1; i <= totalStars; i++) {
+      if (i <= rating) {
+        stars.push(<img src="/star.svg" />)
+      } else {
+        stars.push(<img src="/emptystar.svg" />)
+      }
+    }
+    return <div className="sixstars">{stars}</div>
 
+  }
+
+  if (reviews.length < 1) return <p className="no-data">Loading...</p>;
   return (
     <>
       <OrderNav header="Reviews" />
@@ -106,21 +176,21 @@ const Reviews = () => {
                 <tr key={row.id}>
                   <td onClick={() => navigate("/product/item")} className="Menuitem MenuitemandImage review-orders-tablebody">
                     <img className="itemimage" src="/Octocat.png" />
-                    {row.menuitems}
+                    {row.product?.name}
                   </td>
-                  <td className="Category review-orders-tablebody">{useTruncate(row.user, 15)}</td>
+                  <td className="Category review-orders-tablebody">{useTruncate(row.user.first_name + " " + row.user.last_name, 15)}</td>
                   <td className="Category review-orders-tablebody">
-                    <div>{useTruncate(row.review, 15)}</div>
+                    <div>{useTruncate(row.comment, 15)}</div>
                   </td>
-                  <td className="Price review-orders-tablebody">{/* {row.rating}.00 */}
-                    <img src="/star.svg" />
+                  {/*   <td className="Price review-orders-tablebody"> 
                     <img src="/star.svg" />
                     <img src="/star.svg" />
                     <img src="/star.svg" />
                     <img src="/star.svg" />
                     <img src="/emptystar.svg" />
-                  </td>
-                  <td className="Date review-orders-tablebody">{row.date}</td>
+                  </td> */}
+                  <ReviewStars rating={row.rating} />
+                  <td className="Date review-orders-tablebody">{formatDate(row.created_at)}</td>
                   <td className="modalareaaction Action review-orders-tablebody">
                     <p
                       className="cursorellipsis"
@@ -144,23 +214,16 @@ const Reviews = () => {
                             <div className="imageandviewproductbtn">
                               <img src="/Octocat.png" />
                               <div className="itemnameandviewproduct">
-                                <h3>Golden Penny Rice</h3>
+                                <h3>{row.product?.name}</h3>
                                 <p>View product</p>
                               </div>
                             </div>
                             <div className="spacingstarratingandcomment">
                               <div className="ratingstaranddate">
-                                <div className="sixstars">
-                                  <img src="/star.svg" />
-                                  <img src="/star.svg" />
-                                  <img src="/star.svg" />
-                                  <img src="/star.svg" />
-                                  <img src="/star.svg" />
-                                  <img src="/emptystar.svg" />
-                                </div>
-                                <p>10/10/2024</p>
+                                <ReviewStarsModal rating={row.rating} />
+                                <p>{formatDate(row.created_at)}</p>
                               </div>
-                              <p className="reviewcomment">Lorem ipsum categ irytr , stttsuy suya odiya osiayt ysstrsa uuddee attwwwtd eddyysg tdg syydhhh yywjbdgs, hwhhhgsyy.sdggg.wstsuek.</p>
+                              <p className="reviewcomment">{row.comment}</p>
                             </div>
                             <button className="closebtn" onClick={() => setActiveActionIndex(null)} >Close</button>
                           </div>
@@ -192,9 +255,9 @@ const Reviews = () => {
                 </div>
               ))}
             </div>
-            <div className={indexOfLastRow >= dummyData.length ? "disabled" : "next"}
-              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(dummyData.length / rowsPerPage)))}
-              disabled={indexOfLastRow >= dummyData.length}
+            <div className={indexOfLastRow >= reviews.length ? "disabled" : "next"}
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(reviews.length / rowsPerPage)))}
+              disabled={indexOfLastRow >= reviews.length}
             >
               Next
               <img src="/right.svg" alt="" />

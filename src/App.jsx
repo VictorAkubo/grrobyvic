@@ -7,7 +7,6 @@ import Orders from "./pages/Orders";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Forgotten from "./pages/forgottenpassword/Forgotten";
 import ForgottenPasswordOTP from "./pages/forgottenpassword/ForgottenPasswordOTP";
-import SetNewPassword from "./pages/forgottenpassword/SetNewPassword";
 import Products from "./pages/Products";
 import Dispute from "./pages/Dispute";
 import Bargain from "./pages/Bargain";
@@ -29,13 +28,14 @@ import DisputeItem from "./components/disputeItem/DisputeItem";
 import SpecificStaff from "./components/staffs/SpecificStaff";
 import SpecificCustomer from "./components/customers/SpecificCustomer";
 import ScrollToTop from "./components/ScrollTop";
+import NewPassword from "./pages/forgottenpassword/SetNewPassword";
 
 
 const App = () => {
 
   return (
     <Router>
-      <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/forgottenpassword" element={<Forgotten />} />
@@ -43,10 +43,10 @@ const App = () => {
           path="/forgottenpasswordotp"
           element={<ForgottenPasswordOTP />}
         />
-        <Route path="/setnewpassword" element={<SetNewPassword />} />
+        <Route path="/setnewpassword" element={<NewPassword />} />
 
-        {/* Wrap all protected pages inside Layout */}
         <Route element={<ProtectedRoute />}>
+        {/* Wrap all protected pages inside Layout */}
           <Route element={<Layout />}>
             <Route path={"/"} element={<Dashboard />} />
             <Route path="/" element={<Dashboard />} />
@@ -54,7 +54,7 @@ const App = () => {
             <Route path="/orders/notification" element={<Notification />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/product" element={<Products />} />
-            <Route path="/product/item" element={<ProductItem />} />
+            <Route path="/product/:id" element={<ProductItem />} />
             <Route path="/product/add_new_product" element={<NewProduct />} />
             <Route path="/orders/:id" element={<OrderItem />} />
             <Route path="/dispute" element={<Dispute />} />

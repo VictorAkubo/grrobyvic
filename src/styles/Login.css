@@ -1,3 +1,20 @@
+.successanddeleteimagedivforlogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #fabfbf;
+    border-radius: 40px;
+    margin-left: 10px;
+}
+
+.successanddeleteimagedivforlogin p {
+
+    font-size: 37px;
+    color:#ffffff;
+}
+
 input {}
 
 .login {
@@ -289,7 +306,43 @@ input {}
     line-height: 100%;
     letter-spacing: 4%;
     vertical-align: middle;
+    gap: 10px;
 
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    color: #FFFFFF;
+    width: 614px;
+    height: 70px;
+    border-radius: 16px;
+    background: rgba(27, 157, 47, 0.8);
+    font-family: Lexend;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    vertical-align: middle;
+
+}
+
+.spinner {
+    width: 19px;
+    height: 19px;
+    border-radius: 150px;
+    border: 6px solid;
+    border-color: #ffffff;
+    border-right-color: #1b9d2f;
+    animation: spinner-d3wgkg 1s infinite linear;
+}
+
+@keyframes spinner-d3wgkg {
+    to {
+        transform: rotate(1turn);
+    }
 }
 
 .sideimage {

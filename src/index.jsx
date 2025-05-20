@@ -9,12 +9,15 @@ import '@fontsource/urbanist';
 import '@fontsource/lato';
 import '@fontsource/montserrat';
 import '@fontsource/lexend';
+import { AppProvider } from './context/AuthContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <App />
+    </AppProvider>
   </React.StrictMode>
 );
 

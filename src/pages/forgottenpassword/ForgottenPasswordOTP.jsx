@@ -1,18 +1,42 @@
 import React, { useCallback, useState } from 'react'
 import { useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import "../../styles/forgottenpassword/ForgottenPasswordOTP.css"
-
+import axios from "axios";
 
 const ForgottenPasswordOTP = () => {
   const [active, setActive] = useState(false)
+  const [sign, setSign] = useState(false)
+  const [OTP, setOTP] = useState([])
+  const [emailforOTP, setEmailforOTP] = useState("")
   const navigate = useNavigate();
-  const verifyOTP = () => {
-    navigate("/setnewpassword")
+  const { state } = useLocation();
+
+  const verifyOTP = async () => {
+    try {
+      const realOtp = OTP.join('')
+      setSign(true)
+      const response = await axios.post("https://grro-130ba33f07e0.herokuapp.com/api/v1/authorization/password_reset/validate_token/", {
+        token: realOtp,
+      });
+      const token = response.data.token;
+      console.log(response);
+      console.log(token);
+      localStorage.setItem("verifiedOTP", realOtp);
+      navigate("/setnewpassword")
+      console.log("verify otp",);
+      setSign(false)
+      console.log(response)
+    } catch (error) {
+
+      console.error("verifyotp:", error.response?.data || error.message);
+      setSign(false)
+    }
   }
+
   const inputRefs = useRef([]);
 
-
+  const email = localStorage.getItem("otpemail");
 
   const handleInput = (e, index) => {
     if (e.target.value.length === 1 && index < 5) {
@@ -31,16 +55,17 @@ const ForgottenPasswordOTP = () => {
             <div className="forgot-back-button" onClick={() => navigate("/forgottenpassword")}><img src='/left.svg' /> Back</div>
             <div className='forgotpasswordanddescription'>
               <h2>Email verification</h2>
-              <p>An OTP code has been sent to your email <br /> <span className="emailentered">Joetobaj@demo.com</span></p>
+              <p>An OTP code has been sent to your email <br /> <span className="emailentered">{email}</span></p>
             </div>
             <div className="otp-inputs">
               <div className='otpboxes'>
-                {[...Array(5)].map((_, index) => (
+                {[...Array(6)].map((_, index) => (
                   <input
+                    onChange={(e) => { const newOTP = [...OTP]; newOTP[index] = e.target.value; setOTP(newOTP) }}
                     key={index}
                     type="text"
                     onClick={() => setActive(index)}
-                    maxlength="1"
+                    maxLength="1"
                     className={`otp-box ${active === index ? "activesingleinput" : "otp-box"}`}
                     ref={(el) => (inputRefs.current[index] = el)}
                     onInput={(e) => { handleInput(e, index); setActive(index) }}
@@ -49,7 +74,8 @@ const ForgottenPasswordOTP = () => {
               </div>
               <p className="resend-text">Didn't receive any code? <a href="#" className="resend-link">Resend</a> </p>
             </div>
-            <div className="submitbuttonemail" onClick={verifyOTP}>Submit Number</div>
+            <div className={sign ? "loadingemailforgot" : "submitbuttonemail"} onClick={verifyOTP}>{sign && <span class="spinner"></span>}Submit Number</div>
+
           </div>
           <div className="right">
             <img src="woman.png" alt="Smiling woman" className="image" />

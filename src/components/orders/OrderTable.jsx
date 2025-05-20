@@ -3,24 +3,71 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/orders/OrdersTable.css"
 import DeclineOrder from "./DeclineOrder";
 import SelectDriver from "./SelectDriver";
+import axios from "axios";
+import formatDate from "../../functions/DateConverter";
 const OrderTable = ({ data, rowsPerPage }) => {
     const navigate = useNavigate()
+    const [orders, setOrders] = useState([]);
+    const [supplier, setSupplier] = useState([]);
+    const [matchedSuppliers, setMatchedSuppliers] = useState([]); // For storing matched supplier objects
+
+
     const [status, setStatus] = useState("All Orders");
     const [activeActionIndex, setActiveActionIndex] = useState(false);
     const [cancelOrderAction, setCancelOrderAction] = useState(false);
-    const totalPages = Math.ceil(data.length / rowsPerPage);
-    /*  
-  
-  
-     // Get current page data
-  
-  
-     
-     const [currentPage, setCurrentPage] = useState(1);
-     
-     const indexOfLastRow = currentPage * rowsPerPage;
-     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-     let currentData = data.slice(indexOfFirstRow, indexOfLastRow); */
+    const totalPages = Math.ceil(orders.length / rowsPerPage);
+
+    const [loading, setLoading] = useState(true);
+
+    const fetchOrders = async () => {
+        const token = localStorage.getItem("access_token");
+        try {
+            const response = await axios.get(
+                "https://grro-130ba33f07e0.herokuapp.com/api/v1/orders/all_orders/",
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            const suppliersRes = await axios.get(
+                "https://grro-130ba33f07e0.herokuapp.com/api/v1/product/suppliers/",
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            setOrders(response.data.data);
+            setSupplier(suppliersRes.data.data.results);
+
+
+        } catch (error) {
+            console.error("Error fetching products:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    useEffect(() => {
+        fetchOrders();
+    }, []);
+
+
+    useEffect(() => {
+        if (orders.length > 0 && supplier.length > 0) {
+            const supplierMatches = orders.map(order => {
+                const supplierId = order?.order_items?.[0]?.product?.supplier;
+                const supplierObj = supplier.find(s => s.id === supplierId);
+                return supplierObj || null;
+            });
+
+            setMatchedSuppliers(supplierMatches);
+             
+        }
+    }, [orders, supplier]);
+
 
     const [currentPage, setCurrentPage] = useState(() => {
         return Number(localStorage.getItem("currentPage")) || 1
@@ -35,7 +82,7 @@ const OrderTable = ({ data, rowsPerPage }) => {
         }
     };
     // Filter data based on selected status
-    const filteredData = filter === "All Orders" ? data : data.filter(item => item.status === filter);
+    const filteredData = filter === "All Orders" ? orders : orders.filter(item => item.status === filter);
     useEffect(() => {
         localStorage.setItem("currentPage", currentPage);
 
@@ -51,10 +98,11 @@ const OrderTable = ({ data, rowsPerPage }) => {
         setCurrentPage(1); // Reset to first page when filter changes
     };
     const useTruncate = (text, maxLength) => {
-        if (text.length <= maxLength) return text;
-        return text.slice(0, maxLength) + "..."
+        if (text?.length <= maxLength) return text;
+        return text?.slice(0, maxLength) + "..."
     }
 
+    if (orders.length < 1) return <p className="no-data">Loading...</p>;
 
 
     return (
@@ -102,60 +150,64 @@ const OrderTable = ({ data, rowsPerPage }) => {
                     </div>
                     <div className="customertable-containerbody">
                         {currentRows.length > 0 ? (
-                            currentRows.map((row, index) => (
-                                <div className="customertable-containerrow" key={row.id}>
-                                    <div className="id">
-                                        {currentPage <= 1 ? index + 1 : indexOfFirstRow + index + 1}
-                                    </div>
-                                    <div className="Items" onClick={() => navigate("/orders/1")}>
-                                        {useTruncate(row.items, 65)}
-                                    </div>
-                                    <div className="Purchase">
-                                        {row.purchaseType}
-                                    </div >
-                                    <div className="Business">
-                                        <img src="/download.jpg" alt="" />
-                                        <span>{row.businessName}</span>
-                                    </div>
-                                    <div className="Date">
-                                        {row.date}
-                                    </div >
-                                    <div className="Status">
-                                        <p className={`${row.status === "Delivered" ? "delivered" : row.status === "Declined" ? "declined" : row.status === "Pending" ? "pending" : ""}`}>{row.status}</p>
-                                    </div >
-                                    <div className="Action">
-                                        <img src="/ellipsis.svg" alt=""
-                                            onClick={() =>
-                                                setActiveActionIndex(
-                                                    activeActionIndex === index ? null : index
-                                                )}
-                                        />
-                                        { /*  onClick={() => setActiveActionIndex(true)}  */}
-                                        {activeActionIndex === index && (
-                                            <ul className="dashboardaction">
-                                                <li className="normal underline">
-                                                    <img src="/vieworder.svg" /> View Order
-                                                </li>
-                                                <li className="normal underline">
-                                                    <img src="/trackorder.svg" /> Track Order
-                                                </li>
-                                                <li className="normal underline">
-                                                    <img src="/approveorder.svg" /> Approve Order
-                                                </li>
-                                                <li className="normal underline">
-                                                    <img src="/cancelorder.svg" onClick={() => setCancelOrderAction(true)} />Cancel Order
-                                                </li>
-                                                {/*  <li className="normal delete">
+                            currentRows.map((row, index) => {
+                                const supplierId = row?.order_items?.[0]?.product?.supplier;
+                                const matchedSpecificSupplier = supplier.find(s => s.id === supplierId);
+                                return (
+                                    <div className="customertable-containerrow" key={row.id}>
+                                        <div className="id">
+                                            {currentPage <= 1 ? index + 1 : indexOfFirstRow + index + 1}
+                                        </div>
+                                        <div className="Items" onClick={() => navigate(`/orders/${row.id}`)}>
+                                            {useTruncate(row?.order_items?.[0]?.product?.name, 65)}
+                                        </div>
+                                        <div className="Purchase">
+                                            {row?.order_items?.[0]?.product?.sale_type}
+                                        </div >
+                                        <div className="Business">
+                                            <img src="/download.jpg" alt="" />
+                                            <span>{matchedSpecificSupplier?.name}</span>
+                                        </div>
+                                        <div className="Date">
+                                            {formatDate(row.order_date)}
+                                        </div >
+                                        <div className="Status">
+                                            <p className={`${row.status === "ORDER PLACED" ? "delivered" : row.status === "Declined" ? "declined" : row.status === "Pending" ? "pending" : ""}`}>{row.status}</p>
+                                        </div >
+                                        <div className="Action">
+                                            <img src="/ellipsis.svg" alt=""
+                                                onClick={() =>
+                                                    setActiveActionIndex(
+                                                        activeActionIndex === index ? null : index
+                                                    )}
+                                            />
+                                            { /*  onClick={() => setActiveActionIndex(true)}  */}
+                                            {activeActionIndex === index && (
+                                                <ul className="dashboardaction">
+                                                    <li className="normal underline">
+                                                        <img src="/vieworder.svg" /> View Order
+                                                    </li>
+                                                    <li className="normal underline">
+                                                        <img src="/trackorder.svg" /> Track Order
+                                                    </li>
+                                                    <li className="normal underline">
+                                                        <img src="/approveorder.svg" /> Approve Order
+                                                    </li>
+                                                    <li className="normal underline">
+                                                        <img src="/cancelorder.svg" onClick={() => setCancelOrderAction(true)} />Cancel Order
+                                                    </li>
+                                                    {/*  <li className="normal delete">
                                                     <img src="/delete.svg" />
                                                     Delete Product
                                                 </li> */}
 
-                                            </ul>
-                                        )}
+                                                </ul>
+                                            )}
 
+                                        </div >
                                     </div >
-                                </div >
-                            ))
+                                )
+                            })
                         ) : (
                             <tr>
                                 <td colSpan="8" className="no-data">
@@ -193,8 +245,8 @@ const OrderTable = ({ data, rowsPerPage }) => {
                         ))}
                     </div>
                     <div className="next"
-                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(data.length / rowsPerPage)))}
-                        disabled={indexOfLastRow >= data.length}
+                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(orders.length / rowsPerPage)))}
+                        disabled={indexOfLastRow >= orders.length}
                     >
                         Next
                         <img src="/assets/Vector.svg" alt="" />

@@ -3,6 +3,25 @@ import OrderNav from "../components/OrderNav";
 import OrderTable from "../components/orders/OrderTable";
 
 const Orders = () => {
+  /* const [orders, setSampleData] = useState([]);
+  const [error, setError] = useState(null);
+
+  const fetchOrders = async () => {
+    try {
+      const token = localStorage.getItem("access_token");
+
+      const response = await axios.get("https://grro-130ba33f07e0.herokuapp.com/api/v1/orders/all_orders/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setSampleData(response.data);
+    } catch (err) {
+      console.error("Error fetching orders:", err);
+      setError(err.response?.data || "Something went wrong");
+    }
+  }; */
   let sampleData = [
     {
       id: 1,
@@ -61,6 +80,8 @@ const Orders = () => {
       status: "Pending",
     },
   ];
+
+
 
   return (
     <div style={{ width: "100%" }}>

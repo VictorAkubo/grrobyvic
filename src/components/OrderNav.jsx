@@ -2,7 +2,9 @@ import React from "react";
 import "../styles/OrderNav.css";
 import { useNavigate } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
+import { useAppContext } from "../context/AuthContext";
 const OrderNav = ({ header, subheader }) => {
+  const { profile, accessToken, setAccessToken } = useAppContext();
   const location = useLocation();
   const navigate = useNavigate()
   const useTruncate = (text, maxLength) => {
@@ -14,7 +16,7 @@ const OrderNav = ({ header, subheader }) => {
   return (
     <nav className="navbar">
       <div className="ordernav">
-        <h1>{header}</h1>
+        <h1 onClick={() => console.log(profile)}>{header}</h1>
         <p>{subheader ? subheader : "Handle your orders efficiently from one location."}</p>
       </div>
       <div className="profile">
@@ -32,13 +34,13 @@ const OrderNav = ({ header, subheader }) => {
         <div className="profileandpicture">
           <img className="profilepicture" src="/Octocat.png" alt="" />
           <div className="username">
-            <h3>Dexter Olaniyi</h3>
-            <p>DexterOla@gmail.com</p>
+            <h3>{profile.first_name} {profile.last_name}</h3>
+            <p>{profile.email}</p>
           </div>
           <img className="profiledropdown" src="/dropdown.svg" alt="" />
         </div>
       </div>
-    </nav>
+    </nav >
   );
 };
 

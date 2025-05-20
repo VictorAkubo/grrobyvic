@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Outofstock from "./Outofstock";
 import ProductAvailable from "./ProductAvailable";
 import ProductDelete from "./ProductDelete";
+import axios from "axios";
+import formatDate from "../../functions/DateConverter";
 
 const dummyData = [
   { menuitems: "Mango", category: "Bulk ", date: "15/10/2020 6:20PM", price: 50, status: "Draft" },
@@ -23,6 +25,45 @@ const ProductsTable = () => {
   const [outofstock, setOutofstock] = useState(false);
   const [productAvailable, setProductAvailable] = useState(false);
   const [productDelete, setProductDelete] = useState(false);
+
+
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const token = localStorage.getItem("access_token");
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(
+        "https://grro-130ba33f07e0.herokuapp.com/api/v1/product/products/",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Access the 'data' object inside the response
+      const productsData = response.data.data;
+
+      // Save to state or use directly
+      setProducts(response.data.data.results);
+      console.log(products)
+      console.log(token)
+
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchProducts();
+
+  }, []);
+
 
 
 
@@ -57,7 +98,7 @@ const ProductsTable = () => {
     }
   };
   // Filter dummyData based on selected status
-  const filteredData = filter === "All Bargains" ? dummyData : dummyData.filter(item => item.status === filter);
+  /*   const products = filter === "All Bargains" ? dummyData : dummyData.filter(item => item.status === filter); */
   useEffect(() => {
     localStorage.setItem("currentPage", currentPage);
 
@@ -65,7 +106,7 @@ const ProductsTable = () => {
   // Pagination logic
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
+  const currentRows = products.slice(indexOfFirstRow, indexOfLastRow);
 
   // Handle filter change and reset pagination
   const handleFilterChange = (status) => {
@@ -73,7 +114,7 @@ const ProductsTable = () => {
     setCurrentPage(1); // Reset to first page when filter changes
   };
 
-
+  if (products.length < 1) return <p className="no-data">Loading...</p>;
 
   return (
     <div className="producttablesortandtable">
@@ -133,14 +174,14 @@ const ProductsTable = () => {
           <tbody>
             {currentRows.map((row, index) => (
               <tr key={row.id}>
-                <td onClick={() => navigate("/product/item")} className="Menuitem MenuitemandImage product-orders-tablebody">
+                <td onClick={() => navigate(`/product/${row.id}`)} className="Menuitem MenuitemandImage product-orders-tablebody">
                   <img className="itemimages" src="/Octocat.png" />
-                  {row.menuitems}
+                  {row.name}
                 </td>
-                <td className="Category product-orders-tablebody">{row.category}</td>
-                <td className="Date product-orders-tablebody">{row.date}</td>
+                <td className="Category product-orders-tablebody">{row.category.name}</td>
+                <td className="Date product-orders-tablebody">{formatDate(row.created_at)}</td>
                 <td className="Status product-orders-tablebody">
-                  <div className={row.status === "Available" ? "available" : row.status === "Out of Stock" ? "outofstockstatus" : "draft"}>{row.status}</div>
+                  <div className={row.status === "Available" ? "available" : row.status === "Out of Stock" ? "outofstockstatus" : !row.status ? "available" : "draft"}>{row.status ? row.status : "Available"}</div>
                 </td>
                 <td className="Price product-orders-tablebody">${row.price}.00</td>
                 <td className="modalareaaction Action product-orders-tablebody">

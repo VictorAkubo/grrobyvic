@@ -1,3 +1,17 @@
+.no-data {
+
+
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    gap: 40px;
+    width: 1110px;
+    margin: 0 auto;
+    font-size:30px;
+    font-weight:730;
+    font-family: Nunito;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -36,7 +50,7 @@
 
 .add_productbuttonnowdiv {
     width: 1110px;
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 .add_productbuttonnow {

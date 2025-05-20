@@ -203,6 +203,27 @@
     font-size: 18px;
     line-height: 100%;
     letter-spacing: 4%;
+    vertical-align: middle; 
+    width: 460px;
+    height: 71px;
+    gap: 10px;
+    border-radius: 16px;
+
+
+}
+.loadingemailforgot {
+    display: flex;
+    color: #FFFFFF;
+    align-items: center;
+    justify-content: center;
+    background: rgba(27, 157, 47, 0.8);
+    border: none;
+    cursor: pointer;
+    font-family: Lexend;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 4%;
     vertical-align: middle;
 
 

@@ -1,26 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/orders/OrderItem.css"
 import OrderNav from "../OrderNav";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import formatDate from "../../functions/DateConverter";
 const OrderItem = () => {
   const [status, setStatus] = useState("AwaitingAfterDriverScheduled");
   const [track, setTrack] = useState(false);
+  const { id } = useParams(); // This gets the ID from the URL
+  const [order, setOrder] = useState([]);
+  const [specificOrder, setSpecificOrder] = useState(null);
+
+  useEffect(() => {
+    const fetchOrder = async () => {
+
+      try {
+        const res = await axios.get(`https://grro-130ba33f07e0.herokuapp.com/api/v1/orders/orders/?order_id=${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        });
+
+        setOrder(res.data.data); // Adjust based on your API response structure 
+      } catch (error) {
+        console.error("Error fetching order:", error);
+      }
+    };
+    console.log(order)
+    fetchOrder();
+  }, [id]);
+
+  useEffect(() => {
+    if (order.length > 0) {
+      const orderObj = order.find(s => s.id === id);
+      setSpecificOrder(orderObj)
+    }
+    console.log(specificOrder)
+  }, [order]);
+
   return (
+
     <>
-      <OrderNav header="Manage Order(DBJFA_J555_DGFEA)" />
+      <OrderNav header={`Manage Order(${id})`} />
       {
         track ? (
           <div className="ordertableitem">
+            
           </div>
         ) : (
           <div className="ordertableitem">
             <div className="ordertableiteminnerdiv">
               <div className="ordertableitemdetails">
                 <h2 className="goodsrequested">
+                  {specificOrder?.order_items?.[0]?.product?.name}
                   4 Beans (4kg bag), 3 Oranges (35 baskets), 10 Melons (Pieces),4 Beans
-                  (4kg bag), 3 Oranges (35 baskets), 10 Melons (Pieces){" "}
                 </h2>
                 <div className="costandstatus">
-                  <h1>$60.00</h1>
+                  <h1>$ {specificOrder?.total_price}</h1>
                   {status === "Awaiting" ? (
                     <p className="awaiting">Awaiting</p>
                   ) : status === "AwaitingAfterDriverScheduled" ? (
@@ -31,7 +67,7 @@ const OrderItem = () => {
 
                 </div>
                 <p className="description">
-                  Experience West African comfort in a bowl with our Egusi Soup. Rich melon seed base, vibrant veggies, and your choice of protein, all seasoned to perfection. A delicious journey in every swallow.
+                  {specificOrder?.order_items?.[0]?.product?.description}  {specificOrder?.order_items?.[0]?.product?.extra}
                 </p>
                 <h5>Product Sizing</h5>
                 <div className="sizes">
@@ -50,15 +86,15 @@ const OrderItem = () => {
                   </div>
                   <div className="recieversdetailsright">
                     <p>DBAR-7FGDY-YGDSS</p>
-                    <p>Victor Akubo</p>
-                    <p>+2348159894732</p>
-                    <p>10/10/2024 06:25pm</p>
-                    <p>No 23 Ali Obaje Street Nigeria Kogi State</p>
+                    <p>{specificOrder?.address?.first_name} {specificOrder?.address?.last_name} </p>
+                    <p>{specificOrder?.address?.phone_number}</p>
+                    <p> {formatDate(specificOrder?.created_on)}</p>
+                    <p>{specificOrder?.address?.address}</p>
                   </div>
                 </div>
                 <h5>Note</h5>
                 <p className="note">
-                  User Left a note, user Left a note, user Left a note, user Left a note, user Left a note, user Left a note, user Left a note
+                  {specificOrder?.order_items?.[0]?.product?.dietry_information}
                 </p>
                 {status === "Awaiting" ? (
                   <div className="awaitingconfirm">

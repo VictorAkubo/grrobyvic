@@ -6,7 +6,14 @@ import Updaterolemodal from '../components/settings/Updaterolemodal'
 import Addrolemodal from '../components/settings/Addrolemodal'
 import Suspend from '../components/settings/Suspend'
 import Delete from '../components/settings/Delete'
+import { useNavigate } from 'react-router-dom'
+import { useAppContext } from "../context/AuthContext"
+import axios from 'axios'
+import formatDate from '../functions/DateConverter'
+
+
 const Settings = () => {
+  const navigate = useNavigate()
   const [editProfile, setEditProfile] = useState(false)
   const [role, setRole] = useState(false)
   const [updaterole, setUpdateRole] = useState(false)
@@ -24,6 +31,24 @@ const Settings = () => {
   const [factorAemailconfirmed, set2FAEmailConfirmed] = useState(false)
   const [suspend, setSuspend] = useState(false)
   const [deleteAccount, setDeleteAccount] = useState(false)
+
+
+
+  /* actions api */
+
+  const [oldPassword, setOldPassword] = useState("")
+  const [newPassword, setNewPassword] = useState("")
+  const [reEnterNewPassword, setReEnterNewPassword] = useState("")
+  const [message, setMessage] = useState("")
+  const [PasswordDontMatch, setPasswordDontMatch] = useState("")
+  const { profile, accessToken, setAccessToken } = useAppContext();
+
+  const token = localStorage.getItem('access_token');
+  const [patchemail, setPatchEmail] = useState("")
+  const [patchphone, setPatchPhone] = useState("")
+
+
+  /* Ending of api */
 
 
   const [FAEnabled, setFAEnabled] = useState(false)
@@ -113,6 +138,86 @@ const Settings = () => {
     },
   ]
 
+
+
+  /* Functions For Authorization*/
+
+
+  const handleChangePassword = async () => {
+    const token = localStorage.getItem("access_token")
+    try {
+      if (newPassword === reEnterNewPassword) {
+        const response = await axios.put(
+          'https://grro-130ba33f07e0.herokuapp.com/api/v1/authorization/changepassword/',
+          {
+            oldPassword,
+            newPassword
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          }
+        );
+        setChangePassword(false)
+        setMessage(response.data.message || 'Password changed successfully');
+      } else {
+        setPasswordDontMatch(true)
+        console.log("passwords dont match")
+      }
+    } catch (error) {
+      setMessage(error.response?.data?.message || 'Error changing password');
+    }
+  };
+  const handleUpdate = async () => {
+    try {
+      const response = await axios.patch(
+        'https://grro-130ba33f07e0.herokuapp.com/api/v1/authorization/user_profile/',
+        {
+          email: email,
+          phone_number: phone,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      setMessage(response.data.message || 'Profile updated successfully');
+    } catch (error) {
+      setMessage(error.response?.data?.message || 'Failed to update profile');
+    }
+  };
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem('access_token');
+
+    try {
+      await axios.post(
+        'https://grro-130ba33f07e0.herokuapp.com/api/v1/authorization/logout/',
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      localStorage.removeItem('access_token');
+      navigate("/login")
+      alert('Logged out successfully');
+      // Optionally redirect:
+      // window.location.href = '/login';
+    } catch (error) {
+      alert(error.response?.data?.message || 'Logout failed');
+    }
+  };
+
+
+
   return (
     <div className="mainsettingsdiv">
       {
@@ -156,6 +261,30 @@ const Settings = () => {
                 onClick={() => setAccountDeleted(false)}
               />
             </div>
+          </div>
+        )
+        || PasswordDontMatch && (
+          <div className={`delete-modal  ${PasswordDontMatch ? "slide-in" : "slide-out"}`}>
+            <div className="successanddeleteimagedivforlogin">
+              <p>
+                !
+              </p>
+            </div>
+            <div className="modal-content-forsuccessanddelete">
+              <h3>Error!</h3>
+              <p>Passwords Dont Match</p>
+            </div>
+
+            <div className="closesuccessanddeletemodal">
+
+              <img
+                src="/cancel.svg"
+                alt="Close"
+                className="close-btn"
+                onClick={() => setPasswordDontMatch(false)}
+              />
+            </div>
+
           </div>
         )
       }
@@ -205,6 +334,7 @@ const Settings = () => {
                                 <p>Phone</p>
                                 <div className='dialcodeandnumber'>
                                   <select
+                                  className="selectgapping"
                                     value={selectedCode}
                                     onChange={(e) => setSelectedCode(e.target.value)}
                                   >
@@ -237,8 +367,8 @@ const Settings = () => {
           <img src="/download.jpg" className="logoimage" />
         </div>
         <div className="profiledetails">
-          <h3>Victorugbede</h3>
-          <p>victorugbede@gmail.com</p>
+          <h3>{profile.first_name}{profile.last_name}</h3>
+          <p> {profile.email}</p>
         </div>
       </div>
       <div className="userprofileandothersettings">
@@ -271,27 +401,27 @@ const Settings = () => {
                     <div className="passwordlabelandinput">
                       <label>Old Password</label>
                       <div className="enterpasswordandshow">
-                        <input placeholder="Enter password" />
+                        <input onChange={(e) => setOldPassword(e.target.value)} placeholder="Enter Old password" />
                         <p>show</p>
                       </div>
                     </div>
                     <div className="passwordlabelandinput">
                       <label>New Password</label>
                       <div className="enterpasswordandshow">
-                        <input placeholder="Enter password" />
+                        <input onChange={(e) => setNewPassword(e.target.value)} placeholder="Enter New password" />
                         <p>show</p>
                       </div>
                     </div>
                     <div className="passwordlabelandinput">
                       <label>Re-enter New Password</label>
                       <div className="enterpasswordandshow">
-                        <input />
+                        <input onChange={(e) => setReEnterNewPassword(e.target.value)} placeholder="Re-Enterpassword" />
                         <p>show</p>
                       </div>
                     </div>
                     <div className="resetpasswordandbtn">
                       <p>Reset password</p>
-                      <div>Update Password</div>
+                      <div onClick={handleChangePassword}>Update Password</div>
                     </div>
                   </div>
                 </div>
@@ -781,7 +911,7 @@ const Settings = () => {
             )
           }
           {/* Sign Out */}
-          <div className="specificsetting signout">
+          <div className="specificsetting signout" onClick={handleLogout}>
             <h3>Sign Out</h3>
             <p>Logout of User's Account</p>
           </div>
@@ -819,7 +949,7 @@ const Settings = () => {
               <li>Role</li>
               <li>Date Joined</li>
             </ul>
-            {
+            {/*  {
               dataProfile.map(data => (
                 <ul className="rightsectionprofiledata">
                   <li>{data.name}</li>
@@ -830,7 +960,15 @@ const Settings = () => {
                   <li>{data.datejoined}</li>
                 </ul>
               ))
-            }
+            } */}
+            <ul className="rightsectionprofiledata">
+              <li>{profile.first_name} {profile.last_name}</li>
+              <li>{profile.email}</li>
+              <li>{profile.phone_number}</li>
+              <li>{profile.first_name}{profile.last_name}</li>
+              <li>{profile.account_type}</li>
+              <li>{formatDate(profile.date_joined)}</li>
+            </ul>
           </div>
         </div>
       </div >

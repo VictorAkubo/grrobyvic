@@ -1,21 +1,15 @@
-{
-  /*import { Navigate, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, Navigate, useNavigate } from "react-router-dom";
 
 const ProtectedRoute = () => {
-  const isAuthenticated = localStorage.getItem("token"); // Check login state
+  const navigate = useNavigate()
+  // Check if the access token exists in localStorage
+  const isAuthenticated = localStorage.getItem("access_token");
+  useEffect(() => {
+    isAuthenticated && navigate("/")
+  }, [isAuthenticated])
 
-  return !isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
-};
-
-export default ProtectedRoute;
-*/
-}
-import { Outlet, Navigate } from "react-router-dom";
-
-const ProtectedRoute = () => {
-  const isAuthenticated =true; // Replace this with your actual authentication logic
-
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default ProtectedRoute;

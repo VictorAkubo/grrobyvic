@@ -1,27 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../../styles/products/ProductItem.css"
 import OrderNav from '../OrderNav'
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import formatDate from '../../functions/DateConverter';
 const ProductItem = () => {
+  const { id } = useParams(); // This gets the ID from the URL
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`https://grro-130ba33f07e0.herokuapp.com/api/v1/product/products/?pk=${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        });
+
+        setProduct(res.data.data); // Adjust based on your API response structure
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    console.log(product)
+    fetchProduct();
+
+  }, [id]);
+
+  if (!product) return <p className="productitem-main-content">Loading...</p>;
+
   return (
     <>
-      <OrderNav header="Product - (Fresh Lettuces)" />
-      <div class="productitem-main-content">
-        <div class="left-section">
-          <div class="main-image-div">
-            <img class="main-image" src="/download.jpg" alt="" />
+      <OrderNav header={`Product - ${product.name}`} />
+      <div className="productitem-main-content">
+        <div className="left-section">
+          <div className="main-image-div">
+            <img className="main-image" src={product.images[0].thumbnail} alt="" />
           </div>
           <div className="nameanddescriptionandstatus">
             <div className="nameanddescription">
-              <h3>Fresh Letters</h3>
+              <h3>{product.name}</h3>
               <div className="locationandpostedby">
-                <p class="location">Alagbado,  Lagos State</p>
-                <p className="postedby"><span>Posted by</span> Victor Akubo on Dec 28 2021</p>
+                <p className="location">{product.supplier.address}</p>
+                <p className="postedby"><span>Posted by</span>{product.supplier.name} on {formatDate(product.supplier.created_at)}</p>
               </div>
             </div>
             <p className="status"><p>Available</p></p>
           </div>
 
-          <div class="variation">
+          <div className="variation">
             <h3>Details</h3>
             <div className="info">
               <div className="labelandvaluediv">
@@ -31,14 +58,14 @@ const ProductItem = () => {
                 <p className="label">Units of Measurement</p>
               </div>
               <div className="labelandvaluediv">
-                <p className="value">Vegetable</p>
-                <p className="value">Bam farm house, Kuje - Abuja</p>
-                <p className="value">+234 810 080 8039</p>
-                <p className="value">Gram, Bag, Basket</p>
+                <p className="value">{product.category.name}</p>
+                <p className="value">{product.supplier.address}</p>
+                <p className="value">{product.supplier.contact_phone}</p>
+                <p className="value">{product.sale_type}</p>
               </div>
             </div>
           </div>
-          <div class="variation">
+          <div className="variation">
             <h3>Variation</h3>
             <table className="table">
               <thead>
@@ -50,42 +77,47 @@ const ProductItem = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="imageandsize"> <img src="/download.jpg" />
-                    25kg Sacks Bag</td>
-                  <td className="thickquantity">18</td>
-                  <td className="thickprice">$30.00</td>
-                  <td className="thickprice">$30.00</td>
-                </tr>
-                <tr>
-                  <td class="imageandsize"> <img src="/download.jpg" />25kg Sacks Bag</td>
+                {
+                  product.variations.map(variation => (
+                    <tr>
+                      <td className="imageandsize"> <img src="/download.jpg" />
+                        {variation.value}</td>
+                      <td className="thickquantity">{variation.quantity_per_piece}</td>                     
+                      <td className="thickprice">${variation.price}</td>
+                      <td className="thickprice">${variation.bargain_threshold}</td>
+                    </tr>
+                  ))
+
+                }
+                {/*  <tr>
+                  <td className="imageandsize"> <img src="/download.jpg" />25kg Sacks Bag</td>
                   <td className="thickquantity">19</td>
                   <td className="thickprice">$10.00</td>
                   <td className="thickprice">$10.00</td>
                 </tr>
                 <tr>
-                  <td class="imageandsize"> <img src="/download.jpg" />
+                  <td className="imageandsize"> <img src="/download.jpg" />
                     25kg Sacks Bag</td>
                   <td className="thickquantity">22</td>
                   <td className="thickprice">$10.00</td>
                   <td className="thickprice">$10.00</td>
                 </tr>
                 <tr>
-                  <td class="imageandsize"> <img src="/download.jpg" />
+                  <td className="imageandsize"> <img src="/download.jpg" />
                     25kg Sacks Bag</td>
                   <td className="thickquantity">3</td>
                   <td className="thickprice">$30.00</td>
                   <td className="thickprice">$30.00</td>
                 </tr>
                 <tr>
-                  <td class="imageandsize"> <img src="/download.jpg" />
+                  <td className="imageandsize"> <img src="/download.jpg" />
                     25kg Sacks Bag</td>
                   <td className="thickquantity">1,000</td>
                   <td className="thickprice">$3.50</td>
                   <td className="thickprice">$3.50</td>
-                </tr>
+                </tr> */}
                 <tr>
-                  <td class="imageandsize"> <img src="/download.jpg" />
+                  <td className="imageandsize"> <img src="/download.jpg" />
                     25kg Sacks Bag</td>
                   <td className="thickquantity">700</td>
                   <td className="thickprice">$15.00</td>
@@ -94,25 +126,25 @@ const ProductItem = () => {
               </tbody>
             </table>
           </div>
-          <div class="variation">
+          <div className="variation">
             <h3>Description</h3>
-            <p className="variationdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. .</p>
+            <p className="variationdescription">{product.description}</p>
           </div>
         </div>
-        <div class="right-section">
-          <div class="top-content">
-            <div class="thumbnail-grid">
-              <img src="/download.jpg" className='activeimage' alt="Thumbnail 1" />
-              <img src="/download.jpg" alt="Thumbnail 2" />
-              <img src="/download.jpg" alt="Thumbnail 3" />
-              <img src="/download.jpg" alt="Thumbnail 4" />
+        <div className="right-section">
+          <div className="top-content">
+            <div className="thumbnail-grid">
+              <img src={product.images[0].image_1} className='activeimage' alt="Thumbnail 1" />
+              <img src={product.images[0].image_2} alt="Thumbnail 2" />
+              <img src={product.images[0].image_3} alt="Thumbnail 3" />
+              <img src={product.images[0].image_4} alt="Thumbnail 4" />
             </div>
-            <div class="price">$2.00 /<span>gram</span> </div>
+            <div className="price">$2.00 /<span>gram</span> </div>
           </div>
 
-          <div class="bottom-buttons">
-            <button class="button delete">Delete Product</button>
-            <button class="button edit">Edit Product</button>
+          <div className="bottom-buttons">
+            <button className="button delete">Delete Product</button>
+            <button className="button edit">Edit Product</button>
           </div>
         </div>
       </div>

@@ -470,7 +470,7 @@
 .dialcodeandnumber {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
 }
 
 .dialcodeandnumber select {
@@ -478,6 +478,13 @@
     outline: none;
     background: #F5F5F5;
 }
+.dialcodeandnumber select::content {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+ 
 
 .changenumberbtn {}
 
@@ -650,9 +657,9 @@
     line-height: 100%;
     letter-spacing: 0%;
     margin: 25px auto 8px auto;
-   /*  margin: 25px auto 16px auto; */
+    /*  margin: 25px auto 16px auto; */
     color: #252525;
-    
+
 }
 
 .generalspecificnotification {
@@ -687,7 +694,7 @@
     line-height: 100%;
     letter-spacing: 0%;
     color: #252525;
-text-wrap:nowrap;
+    text-wrap: nowrap;
 
 }
 
